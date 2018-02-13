@@ -1,0 +1,42 @@
+<div class="body-content">              
+  <div class="setting-cont">
+      <h3 class="main-heading">General Settings</h3>
+      <div class="pref">
+        <h4 class="sub-heading">Personal Preferences</h4>
+        <p>
+          <label class="info-check noselect"><input type="checkbox" checked=""> <span>Mature Content Filter <small class="light-txt">(Hide any questionable or suggestive wallpapers)</small></span></label>
+        </p>
+        <p>
+          <label class="info-check noselect"><input type="checkbox"> <span>Invisible Mode <small class="light-txt">(If enabled, you will not show up in the "Members Online" list)</small></span></label>
+        </p>
+        <!-- <p>
+          <label class="info-check noselect"><input type="checkbox"> <span>Hide Thumbnail Info <small class="light-txt">(If enabled, this will not show the information popup when your mouse hovers over certain thumbnails)</small></span></label>
+        </p> -->
+        <div class="form-inline">
+          <div class="form-group">
+            <label>Wallpaper Download Resolution:</label>
+            <select class="form-control">
+              <option>Auto-Detect (Default)</option>
+            </select>
+          </div>
+        </div>
+        <br>
+        <button type="button" class="btn btn-success">Save Changes</button>
+      </div>
+      <hr>
+      <div class="member-ignore">
+        <h4 class="sub-heading">Member Ignore List</h4>
+        <div class="form-inline">
+          <div class="form-group">
+            <label>Add a member to your ignore list:</label>
+            <input type="text" class="form-control" #blacklist>
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="setBlacklist(blacklist.value)">Submit</button>
+        </div>
+        <div class="ignore-info">
+          <p>Anyone you add to your ignore list will not be able to send you Private Messages, nor comment on any of your wallpapers or your profile.</p>
+        </div>
+      </div>
+  </div>
+</div>
+<!--/.body-content-->

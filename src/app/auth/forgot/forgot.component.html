@@ -1,0 +1,375 @@
+<div id="page">
+    <!--Header-->
+    <header class="site-header">
+    	<div class="header-top">
+        	<div class="container">
+            	<div class="site-info">
+                	<ul class="clearfix">
+                    <li class="fixed-logo"><a href="#"><img src="assets/images/dn-line-logo-light.png" alt=""></a></li>
+                	  <li><i class="fa fa-user"></i> <strong>1,034,461</strong> Members Online</li>
+                    <li><i class="fa fa-picture-o"></i> <strong>1,461,195</strong> Wallpapers</li>
+                  </ul>
+                </div>
+                <div class="nav-icons">
+                	<ul class="clearfix">
+                    	<li class="top-login"><a href="#" data-toggle="modal" data-target="#LoginBox"><i class="fa fa-sign-in"></i> Sign In</a></li>
+                      <li class="top-reg visible-xs-inline-block"><a href="#" data-toggle="modal" data-target="#SignupBox"><i class="fa fa-pencil"></i> Join for <strong class="text-uppercase">Free</strong></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--/.header-top-->
+        
+        <div class="header-bottom">
+        	<nav class="navbar">
+              <div class="container">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#"><img src="assets/images/desktop-nexus-logo.png" alt=""></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Explore <i class="fa fa-angle-down"></i></a>
+                      <div class="dropdown-menu">
+                        <div class="inner-dropdown clearfix">
+                            <div class="nav-block">
+                                <h5 class="nav-heading">Recent</h5>
+                                <ul class="recent-menu">
+                                    <li><a href="#">Nature</a></li>
+                                    <li><a href="#">Celebs</a></li>
+                                    <li><a href="#">Brtiney Spears</a></li>
+                                    <li><a href="#">Cartoon</a></li>
+                                </ul>
+                            </div>
+                            <div class="nav-block">
+                                <h5 class="nav-heading">Popular</h5>
+                                <ul class="icon-menu">
+                                    <li><a href="#" class="icon-car"><span class="dn-car-lg"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="nav-block">
+                                <h5 class="nav-heading">Favorite</h5>
+                                <ul class="icon-menu">
+                                    <li><a href="#" class="icon-fav"><span class="dn-favourite"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="nav-block">
+                                <h5 class="nav-heading">Galleries</h5>
+                                <div class="general-menu clearfix">
+                                    <ul class="menu-col">
+                                        <li><a href="#"><span class="dn-airplane"></span> Airplanes</a></li>
+                                        <li><a href="#"><span class="dn-abstract"></span> Abstract</a></li>
+                                        <li><a href="#"><span class="dn-animal"></span> Animals</a></li>
+                                        <li><a href="#"><span class="dn-car"></span> Cars</a></li>
+                                    </ul>
+                                    <ul class="menu-col">
+                                        <li><a href="#"><span class="dn-anime"></span> Anime</a></li>
+                                        <li><a href="#"><span class="dn-travel"></span> Travel</a></li>
+                                        <li><a href="#"><span class="dn-computer"></span> Computers</a></li>
+                                        <li><a href="#"><span class="dn-people"></span> People</a></li>
+                                    </ul>
+                                    <ul class="menu-col">
+                                        <li><a href="#"><span class="dn-place"></span> Places</a></li>
+                                        <li><a href="#"><span class="dn-food-drink"></span> Food&Drink</a></li>
+                                        <li><a href="#"><span class="dn-videogame"></span> Video Games</a></li>
+                                        <li><a href="#" class="view-more">View More <span class="bullet"></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li><a href="#">Upload</a></li>
+                    <li class="btn-join-free hidden-xs"><a href="#" data-toggle="modal" data-target="#SignupBox">Join for <strong class="text-uppercase">Free</strong></a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+        </div>
+        <!--/.header-bottom-->
+    </header>
+    <!--Header-->
+    <!-- Main Container -->
+	<div class="main-container">
+		<div class="container">
+			<div class="page-wrapper clearfix">
+				<div class="body-content">              
+					<div class="setting-cont">
+						<h3 class="main-heading">Change Password</h3>
+							<div class="change-pass">
+								<form (ngSubmit)="change(cp)" #cp="ngForm">
+									<div class="form-group">
+										<label class="control-label">New Password:</label>
+										<input name="password" ngModel type="password" class="form-control" required>
+									</div>
+									<div class="form-group">
+										<label class="control-label">Password Again:</label>
+										<input name="confirm" ngModel type="password" class="form-control" required>
+									</div>
+									<button type="submit" class="btn btn-success" [disabled]="!cp.valid">Save Changes</button>
+								</form>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+ 
+    <!--/.main-container-->
+    <footer class="graphic-footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="graphic-figures">
+            <span class="foot-fig figu-01"></span>
+            <span class="foot-fig figu-02"></span>
+            <span class="foot-fig figu-03"></span>
+            <span class="foot-fig figu-04"></span>
+            <span class="foot-fig figu-05"></span>
+            <span class="foot-fig figu-06"></span>
+            <span class="foot-fig figu-07"></span>
+            <span class="foot-fig figu-08"></span>
+          </div>
+          <div class="footer-signup">
+              <h3><strong>Sign Up</strong> For Our Weekly Newsletter</h3>
+                <div class="signup-form">
+                    <div class="input-group">
+                      <input class="form-control" placeholder="Email Address" type="text">
+                      <span class="input-group-btn">
+                        <button class="btn" type="button">Sign Up</button>
+                      </span>
+                    </div>
+              </div>
+            </div>
+            <div class="divide-nav">
+              <ul>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Popular Wallpapers</a></li>
+                  <li><a href="#">Popular Tags</a></li>
+                  <li><a routerLink="cms">Community Stats</a></li>
+                  <li><a href="#">Member List</a></li>
+                  <li><a routerLink="contact">Contact Us</a></li>
+              </ul>
+            </div>
+            <div class="footer-mascot">
+              <div class="circle-social">
+                <a href="#" target="_blank" class="icon-fb" data-toggle="tooltip" data-placement="left" title="facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" target="_blank" class="icon-tw" data-toggle="tooltip" data-placement="left" title="Twitter"><i class="fa fa-twitter"></i></a>
+                <a href="#" target="_blank" class="icon-pin" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+                <a href="#" target="_blank" class="icon-linked" data-toggle="tooltip" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+                <a href="#" target="_blank" class="icon-gplus" data-toggle="tooltip" data-placement="right" title="GooglePlus"><i class="fa fa-google-plus"></i></a>
+                <a href="#" target="_blank" class="icon-bee" data-toggle="tooltip" data-placement="right" title="Forumbee"><i class="fa fa-forumbee"></i></a>
+              </div>
+              <div class="foot-fig footer-mascot-figure"></div>
+              <div class="wooden-stand">
+                <a href="#" class="store-link">Visit Dn Store</a>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <span class="foot-fig figu-09"></span>
+          <span class="foot-fig figu-10"></span>
+          <span class="foot-fig figu-11"></span>
+          <span class="foot-fig figu-12"></span>
+          <div class="footer-nav">
+              <ul>
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Terms of Service</a></li>
+                  <li><a href="#">Partnerships</a></li>
+                  <li><a href="#">DMCA Copyright Violation</a></li>
+              </ul>
+          </div>
+          <div class="copyright">&copy; 2016 Desktop Nexus - All rights reserved.</div>
+          <div class="server-info">Page rendered with 9 queries (and 0 cached) in 0.113 seconds from server -72.</div>
+        </div>
+      </div>
+    </footer>
+    <!-- /.graphic-footer -->
+ <div>
+
+<div class="modal fade" id="SignupBox" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <div class="signup-cols">
+          <div class="col-right col-sm-push-6">
+            <div class="log-form">
+              <h3>Join Desktop Nexus!</h3>
+              <span class="free-tag"></span>
+              <div class="social-log btn-full">
+                <h4>Signup with:</h4>
+                <a href="#" class="log-btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                <a href="#" class="log-btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                <a href="#" class="log-btn btn-gplus"><i class="fa fa-google-plus"></i>  Google Plus</a>
+              </div>
+              <div class="toggle-signup-email text-center">
+                <button type="button" class="btn btn-default"><i class="fa fa-envelope-o"></i> Signup with an Email</button>
+              </div>
+              <div class="signup-email">
+                  <form>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input type="text" id="firstname" name="firstname" ngModel class="form-control" placeholder="First Name" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="text" id="lastname" name="lastname" ngModel class="form-control" placeholder="Last Name" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="username" name="username" ngModel class="form-control" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input type="password" id="password" name="password" ngModel class="form-control" placeholder="Password" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="password" id="confirm" name="confirm" class="form-control" placeholder="Verify Password" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" ngModel class="form-control" placeholder="Email Address" required>
+                        <p class="text-right"><small>We respect your privacy. <a href="#">Read more</a></small></p>
+                    </div>
+                    <div class="form-group">
+                        <!--<img src="assets/images/not-robot.jpg" alt="" class="img-responsive">-->
+                        <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6Lck3SYUAAAAAPusT5cwRT8EqIH_N62REeUsP3aP"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-checkbox">
+                            <input type="checkbox" name="" id="emailme" checked> <label for="emailme">Email me popular wallpapers each week</label>
+                        </div>
+                        <div class="custom-checkbox">
+                            <input type="checkbox" name="agreed" ngModel id="agreed" required> <label for="agreed">I agree to the <a href="#">terms of service</a>.</label>
+                        </div>
+                    </div>
+                    <div class="reg-btn">
+                        <button type="submit" class="btn btn-success btn-lg">Register Now!</button>
+                    </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-left col-sm-pull-6">
+            <div class="info-points">
+              <h3>Why Join Desktop Nexus?</h3>
+              <ul>
+                <li>
+                  <p>Be part of the <strong>world's fastest</strong> growing wallpaper community!</p>
+                </li>
+                <li>
+                  <p>Contribute! <strong>Upload and share</strong> your wallpapers with the world!</p>
+                </li>
+                <li>
+                  <p>Members see <strong>less advertising</strong> than guests!</p>
+                </li>
+                <li>
+                  <p><strong>Receive feedback</strong> on your profile and all your wallpapers!</p>
+                </li>
+                <li>
+                  <p>Organize your favorite wallpapers to <strong>share with friends</strong>!</p>
+                </li>
+                <li>
+                  <p>Be identified by your <strong>personalized avatar</strong> for comments or uploads!</p>
+                </li>
+                <li>
+                  <p>Cast your votes to help <strong>rank the best</strong> and most popular wallpapers!</p>
+                </li>
+              </ul>
+            </div>
+            <div class="reg-mascot"></div>
+            <div class="already-member text-right">
+              <p>Already a member?</p>
+              <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#LoginBox" data-dismiss="modal">Click here to <span>login!</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div id="LoginBox" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+
+
+
+<!-- Mixins-->
+    <div class="log-container">
+      <div class="card"></div>
+      <div class="card">
+        <h3 class="title">Login with:</h3>
+        <div class="social-log">
+            <button class="log-btn btn-fb"><i class="fa fa-facebook"></i> Facebook</button>
+            <button class="log-btn btn-tw"><i class="fa fa-twitter"></i> Twitter</button>
+            <button class="log-btn btn-gplus"><i class="fa fa-google-plus"></i>  Google Plus</button>
+          </div>
+        <form>
+          <div class="form-group">
+            <input type="text" id="username" name="username" ngModel class="form-control" placeholder="UserName" required>
+          </div>
+          <div class="form-group">
+            <input type="password" id="password" name="password" ngModel class="form-control" placeholder="Password" required>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-8">
+                  <div class="forgot-links"><a href="#" class="switch-view-user">Forgot Username?</a> <span class="log-divider">|</span> <a href="#" class="switch-view-pass">Forgot Password?</a></div>
+              </div>
+              <div class="col-sm-4">
+                <button type="submit" class="btn btn-success btn-lg btn-block">Log In</button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="log-footer">
+          Don't have an account? <a href="#" data-toggle="modal" data-target="#SignupBox" data-dismiss="modal">Join for <strong>FREE</strong></a>
+        </div>
+      </div>
+      <div class="card alt fu">
+        <div class="toggle" title="Reset Username"></div>
+        <h3 class="title">Forgot Username?
+          <div class="close"></div>
+        </h3>
+        <form>
+          <div class="form-group">
+            <input type="text" id="email" name="email" ngModel class="form-control" placeholder="Enter Your Email Address" required>
+          </div>
+          <div class="button-container">
+            <button type="submit" class="btn btn-success btn-lg">Send</button>
+          </div>
+        </form>
+      </div>
+      <div class="card alt fp">
+        <div class="toggle" title="Reset Password"></div>
+        <h3 class="title">Forgot Password?
+          <div class="close"></div>
+        </h3>
+        <form>
+          <div class="form-group">
+            <input type="text" id="email" name="email" ngModel class="form-control" placeholder="Enter Your Email Address" required>
+          </div>
+          <div class="button-container">
+            <button type="submit" class="btn btn-success btn-lg">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+    </div>
+  </div>
+</div>

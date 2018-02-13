@@ -1,0 +1,13 @@
+    <div id="page">
+        <!--Header-->
+        <app-header *ngIf="!valid"></app-header>
+        <app-main-header *ngIf="valid"></app-main-header>
+        <!--Header-->
+        <div class="error">
+            <img src="assets/images/404.png" />
+        </div>
+        <!-- Footer -->
+        <app-footer *ngIf="!valid"></app-footer>
+        <app-main-footer *ngIf="valid"></app-main-footer>
+        <!-- Footer -->
+    </div>

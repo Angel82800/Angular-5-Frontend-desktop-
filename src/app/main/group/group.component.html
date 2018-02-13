@@ -1,0 +1,200 @@
+    <div class="main-container">
+        <div class="group-header">
+            <div class="group-banner imageFit">
+                <img src="assets/images/profile-banner.jpg" alt="">
+            </div>
+            <div class="group-info-sec">
+                <div class="container">
+                    <div class="group-info">
+                        <div class="group-thumb-box">
+                            <div class="group-thumb imageFit">
+                                <img src="assets/images/wallpaper-17.jpg" alt="">
+                            </div>
+                            <div class="grp-name">
+                                <p>Group</p>
+                                <h3>{{group.name}} /Abstract</h3>
+                            </div>
+                            <div class="grp-meta">
+                                <ul class="clearfix">
+                                    <li><i class="fa fa-picture-o"></i> <strong>{{(images).length}}</strong> Wallpaper</li>
+                                    <li><i class="fa fa-users"></i> <strong>{{(followers).lenght}}</strong> Followers</li>
+                                </ul>
+                            </div>
+                            <div class="group-follow">
+                                <button class="btn btn-primary btn-icon btn-follow" (click)="onFollow(group.id)">Follow Group</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.group-header-->
+        
+   		<div class="container">
+        	<div class="page-wrapper clearfix">
+            	<div class="body-content">
+                	<div class="content-poster-block">
+                    	<a href="#" target="_blank"><img src="assets/images/poster-rect-01.jpg" alt=""></a>
+                    </div>
+                    <!--/.poster-block-->
+                    
+                    <div class="gallery-thumbs-container">
+                        <h4 class="gal-heading">Recently Added Wallpapers</h4>
+                        <div class="gallery-thumbs col-4">
+                            <ol class="clearfix">
+                                <li *ngFor="let image of images">
+                                    <div class="gal-thumb-outer">
+                                        <div class="gal-thumb imageFit">
+                                            <a href="#" data-popover="true" data-html="true"><img src="{{s3Url}}{{image.s3_id}}" alt=""></a>
+                                        </div>
+                                        <div class="gal-thumb-details hidden">
+                                           <div class="thumb-popover">
+                                                <div class="pop-top">
+                                                    <h4 class="pop-title">{{image.title}}</h4>
+                                                    <div class="user-details clearfix">
+                                                        <div class="user-thumb imageFit">
+                                                            <a href="#"><img src="assets/images/user-02.jpg" alt=""></a>
+                                                        </div>
+                                                        <h5 class="user-name"><a routerLink="/wallpaper/{{image.id}}">{{image.firstname}} {{image.lastname}}</a></h5>
+                                                        <p class="upload-time"><strong>Uploaded:</strong> 2 hours ago</p>
+                                                    </div>
+                                                </div>
+                                                <div class="post-meta-row">
+                                                    <ul>
+                                                        <li><i class="fa fa-eye"></i> 9485</li>
+                                                        <li><i class="fa fa-thumbs-o-up"></i> 3092</li>
+                                                        <li><i class="fa fa-heart"></i> 383</li>
+                                                        <li><i class="fa fa-commenting"></i> 26</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- row 3-->
+                            </ol>
+                        </div>
+                        
+                        <div class="pagination-container text-center">
+                            <ul class="pagination">
+                                <li class="left-etc disabled p-end"><a href="#">&laquo;</a></li>
+                                <li><a href="">1</a></li>
+                                <li class="active"><span>2</span></li>
+                                <li><a href="">3</a></li>
+                                <li><a href="">4</a></li>
+                                <li><a href="">5</a></li>
+                                <li><a href="">6</a></li>
+                                <li><a href="">7</a></li>
+                                <li><a href="">8</a></li>
+                                <li><a href="">9</a></li>
+                                <li><a href="">10</a></li>
+                                <li><a href="">11</a></li>
+                                <li><a href="">12</a></li>
+                                <li><a href="">13</a></li>
+                                <li><a href="">14</a></li>
+                                <li><a href="">15</a></li>
+                                <li><a href="">16</a></li>
+                                <li><a href="">17</a></li>
+                                <li><a href="">18</a></li>
+                                <li><a href="">19</a></li>
+                                <li class="right-etc p-end"><a href="#">&raquo;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!--/.body-content-->
+                <div class="right-sidebar">
+                	<div class="widget">
+                    	<div class="poster-block poster-300x250">
+                        	<a href="#" target="_blank"><img src="assets/images/poster-sidebar-01.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="widget">
+                    	<div class="sidebar-group-info">
+                    	    <h3 class="title">{{group.name}} /Abstract</h3>
+                    	    <p>Hey My Dear Friends WelCome To "Digital Art/Abstract" Group You Can Upload And Add Old Wall For Creative, Art, Abstract, Fantasy, Firework, 3d, Texatures, Mind Treasure, Photography Wall And Other Digital Art Wall.So Join And Enjoy.</p>
+                    	</div>
+                    </div>
+                    <!--/Widget .love-tip-->
+                    
+                    <div class="widget">
+                    	<h3 class="widget-title">Top Five Galleries</h3>
+                    	<div class="wallpaper-group col-1 text-center">
+                        	<ul class="clearfix">
+                                <li *ngFor="let gallery of galleries; let i = index">
+                                	<div class="pic-block" *ngIf="i == 0">
+                                    	<div class="pic-thumb imageFit">
+                                        	<a routerLink="/gallery/{{gallery.name}}"><img src="assets/{{gallery.header_image_url}}" alt=""></a>
+                                        </div>
+                                        <h6 class="pic-title">{{gallery.name}}</h6>
+                                    </div>
+                                </li>
+                                <li *ngFor="let gallery of galleries; let i = index">
+                                	<div class="pic-block" *ngIf="i == 1">
+                                        <div class="pic-thumb imageFit">
+                                            <a routerLink="/gallery/{{gallery.name}}"><img src="assets/{{gallery.header_image_url}}" alt=""></a>
+                                        </div>
+                                        <h6 class="pic-title">{{gallery.name}}</h6>
+                                    </div>
+                                </li>
+                                <li *ngFor="let gallery of galleries; let i = index">
+                                	<div class="pic-block" *ngIf="i == 2">
+                                        <div class="pic-thumb imageFit">
+                                            <a routerLink="/gallery/{{gallery.name}}"><img src="assets/{{gallery.header_image_url}}" alt=""></a>
+                                        </div>
+                                        <h6 class="pic-title">{{gallery.name}}</h6>
+                                    </div>
+                                </li>
+                                <li *ngFor="let gallery of galleries; let i = index">
+                                	<div class="pic-block" *ngIf="i == 3">
+                                        <div class="pic-thumb imageFit">
+                                            <a routerLink="/gallery/{{gallery.name}}"><img src="assets/{{gallery.header_image_url}}" alt=""></a>
+                                        </div>
+                                        <h6 class="pic-title">{{gallery.name}}</h6>
+                                    </div>
+                                </li>
+                                <li *ngFor="let gallery of galleries; let i = index">
+                                	<div class="pic-block" *ngIf="i == 4">
+                                        <div class="pic-thumb imageFit">
+                                            <a routerLink="/gallery/{{gallery.name}}"><img src="assets/{{gallery.header_image_url}}" alt=""></a>
+                                        </div>
+                                        <h6 class="pic-title">{{gallery.name}}</h6>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--/Widget .wallpaper-group-->
+                    
+                    <div class="widget">
+                    	<div class="poster-block poster-300x600">
+                        	<a href="#" target="_blank"><img src="assets/images/poster-sidebar-02.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    
+                    <div class="widget">
+                    	<div class="group-author-box">
+                    	    <div class="box-header clearfix">
+                    	        <div class="author-thumb imageFit">
+                    	            <a href="#"><img src="assets/images/user-05.jpg" alt=""></a>
+                    	        </div>
+                    	        <div class="author-info">
+                                    <p>Created by</p>
+                                    <h3 class="pf-name"><a href="#">NorthHero98</a></h3>
+                                    <p>April 6th, 2013</p>
+                    	        </div>
+                    	    </div>
+                    	    <div class="box-footer">
+                    	        <i class="fa fa-clock-o"></i> Last Activity : 29 Minutes Ago
+                    	    </div>
+                    	</div>
+                    </div>
+                    <!--/Widget .pic-data-table-->
+                    
+                </div>
+                <!--/.right-sidebar-->
+            </div>
+        </div>
+    </div>
+    <!--/.main-container-->

@@ -1,0 +1,64 @@
+ul.email-list {
+	list-style: none;
+	background-color: #fff;
+	border: 1px solid #d1d5da;
+	border-radius: 3px;
+	padding: 0 5px;
+	margin-bottom: 20px;
+}
+ul.email-list li {
+	padding: 8px 5px;
+	margin-top: -1px;
+	list-style-type: none;
+	border-top: 1px solid #e1e4e8;
+}
+ul.email-list li:first-of-type {
+	border-top-color: transparent;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+}
+ul.email-list li:last-of-type {
+	border-bottom-right-radius: 2px;
+	border-bottom-left-radius: 2px;
+}
+ul.email-list label.info-check {
+	width: 100%;
+	display: block;
+	padding-left: 10px;
+}
+ul.email-list label.info-check span.tooltipped {
+	padding: 4px 6px;
+	margin-left: 4px;
+	color: #fff;
+	background-color: #959da5;
+	border-radius: 3px;
+}
+ul.email-list label.info-check span.email-action {
+	float: right;
+	margin-right:15px;
+	margin-top:-5px;
+}
+ul.email-list label.info-check span.email-action button {
+	cursor: pointer;
+}
+span.email-action.disabled svg{
+	fill: #6a737d;
+}
+ul.email-list label.info-check span.tooltipped.active {
+	background-color: #28a745;
+}
+ul.email-list label.info-check span:before {
+	display: none;
+}
+div.add-primary, div.add-email {
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #ececec;
+}
+div.add-email #email, div.add-primary #primary_email_select{
+	width: initial;
+	display: initial;
+}
+div.add-email button, div.add-primary button {
+	margin-left: 10px;
+}

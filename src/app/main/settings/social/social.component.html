@@ -1,0 +1,25 @@
+<div class="body-content">              
+    <div class="setting-cont">
+        <h3 class="main-heading">Social Accounts</h3>
+        <h4 class="sub-heading">Link your social accounts</h4>
+        <div class="user-social">
+          <div class="icon-row clearfix">
+            <span class="log-btn btn-fb"><i class="fa fa-facebook"></i></span>
+            <input type="text" class="form-control fb-input" placeholder="Enter Facebook Link" value="{{user.facebook}}">
+          </div>
+          <hr>
+          <div class="icon-row clearfix">
+            <span class="log-btn btn-tw"><i class="fa fa-twitter"></i></span>
+            <input type="text" class="form-control twitter-input" placeholder="Enter Twitter Link" value="{{user.twitter}}">
+          </div>
+          <hr>
+          <div class="icon-row clearfix">
+            <span class="log-btn btn-gplus"><i class="fa fa-google-plus"></i></span>
+            <input type="text" class="form-control google-input" placeholder="Enter Google Plus Link" value="{{user.google}}">
+          </div>
+          <hr>
+        </div>
+        <button type="button" class="btn btn-success" (click)="saveSocial()">Save Changes</button>
+    </div>
+</div>
+<!--/.body-content-->

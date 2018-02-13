@@ -1,0 +1,342 @@
+    <div class="main-container" #reports>
+    	<div class="profile-summary">
+        	<div class="pf-header">
+            	<div class="pf-banner imageFit">
+                    <img src="{{s3Url}}{{user.cover_img}}" alt="">
+                </div>
+                <div class="membership-date"><span><strong>Member since:</strong> {{user.created_at | date:'fullDate'}}</span> <i class="fa fa-info-circle"></i></div>
+            </div>
+            <!--/.pf-header-->
+
+            <div class="pf-info">
+                <div class="container">
+                    <div class="profile-box">
+                        <div class="pf-thumb imageFit">
+                            <img src="{{s3Url}}{{user.avatar}}" alt="">
+                        </div>
+                        <div class="pf-btn-cont">
+                            <h3 class="pf-name">{{user.firstname}} {{user.lastname}}</h3>
+                            <button type="button" class="btn btn-primary"><span class="icon-holder"><i class="fa fa-plus"></i></span> Follow</button>
+                            <button type="button" class="btn btn-success"><span class="icon-holder"><i class="fa fa-envelope"></i></span> Message</button>
+                        </div>
+                        <div class="pf-level-box clearfix">
+                            <div class="level-box">
+                                <div class="progress-ouuter">
+                                    <div class="p-status" style="width:{{user.exp}}%;"></div>
+                                </div>
+                                <div class="progress-info clearfix">
+                                    <span class="pull-left">{{user.exp}}%</span>
+                                    <span class="pull-right">+ 139,481 xp until level {{user.level+1}}</span>
+                                </div>
+                            </div>
+                            <div class="level-badge">
+                                <span>Level</span>
+                                <strong>{{user.level}}</strong>
+                            </div>
+                        </div>
+                        <div class="pf-listing">
+                            <ul class="pf-info-slide">
+                                <li>
+                                    <a class="list-box" href="#">
+                                        <span class="count">{{user.uploads}}</span> Uploads
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="list-box" href="#">
+                                        <span class="count">{{user.favourites}}</span> Favorites
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="list-box">
+                                        <span class="count">{{user.likes}}</span> Likes
+                                    </div>
+                                </li>
+                                <li>
+                                    <a class="list-box" href="#" data-toggle="modal" data-target="#FollowingModal">
+                                        <span class="count">{{follow.following}}</span> Following
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="list-box" href="#" data-toggle="modal" data-target="#FollowingModal">
+                                        <span class="count">{{follow.follower}}</span> Followers
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.pf-info -->
+
+            <div class="pf-badges-area">
+                <div class="container">
+                    <div class="row space-20">
+                        <div class="col-sm-6 col">
+                            <div class="badges-box">
+                                <div class="box-heading"><span>Favorite Stickers</span></div>
+                                <div class="badge-listing">
+                                    <ul class="fav-sticker">
+                                        <li>
+                                            <div class="badge-block">
+                                                <div class="sticker-01">
+                                                    <img src="assets/images/sticker-01.png" alt="">
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="badge-block">
+                                                <div class="sticker-02">
+                                                    <img src="assets/images/sticker-02.png" alt="">
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="badge-block">
+                                                <div class="sticker-03">
+                                                    <img src="assets/images/sticker-03.png" alt="">
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <a href="#" class="more-badges">
+                                    <span class="count">12</span> <span class="txt">More</span>
+                                    <span class="ellipsis">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col">
+                            <div class="badges-box">
+                                <div class="box-heading"><span>Achievements</span></div>
+                                <div class="badge-listing">
+                                    <ul class="achieve-badges">
+                                        <li>
+                                            <div class="badge-block">
+                                                <div class="achievement-01">
+                                                    <img src="assets/images/achievement-01.png" alt="">
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="badge-block">
+                                                <div class="achievement-02">
+                                                    <img src="assets/images/achievement-02.png" alt="">
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="badge-block">
+                                                <div class="achievement-03">
+                                                    <img src="assets/images/achievement-03.png" alt="">
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <a href="#" class="more-badges">
+                                    <span class="count">09</span> <span class="txt">More</span>
+                                    <span class="ellipsis">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.pf-badges-area -->
+
+            <div class="pf-post-about">
+                <div class="container">
+                    <div class="row space-20">
+                        <div class="col-sm-6 col">
+                            <div class="pf-post-box bd_parent">
+                            <h3 class="box-heading">Post on {{ user.firstname}} {{user.lastname}}’s Profile</h3>
+                            <div class="form-group">
+                                <textarea class="form-control bd_textarea bd_post" rows="4" [disabled]="isBan" placeholder="Write your message..."></textarea>
+                            </div>
+                            <div class="post-btns">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-12 col-lg-6 col-sticker">
+                                        <div class="custom-checkbox noselect">
+                                          <input id="fb-check" type="checkbox" name="check" value="" checked>
+                                          <label for="fb-check"><i class="fa fa-facebook-square"></i><span>Facebook</span></label>
+                                        </div>
+                                        <div class="custom-checkbox noselect">
+                                          <input id="tw-check" type="checkbox" name="check" value="">
+                                            <label for="tw-check"><i class="fa fa-twitter-square"></i><span>Twitter</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-12 col-lg-6 col-sticker">
+                                        <div class="row">
+                                            <div class="col-xs-4 col-sm-7">
+                                                <a href="#" class="attach-sticker noselect" data-toggle="modal" data-target="#AttachSticker"><span class="icon-holder"></span> <span class="mob-txt">Attach</span> a Sticker</a>
+                                            </div>
+                                            <div class="col-xs-8 col-sm-5">
+                                                <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="isBan" (click)="uploadPost()">Post</button>
+                                            </div>
+                                        </div>
+                                    </div>                                
+                                </div>
+                            </div>
+                        </div>
+                        <!--/.pf-post-box-->
+                        </div>
+                        <div class="col-sm-6 col">
+                            <div class="pf-about-box">
+                                <h3 class="box-heading">About {{user.firstname}}</h3>
+                                <div class="box-tools" id="{{author.username}}" *ngIf="user.id === author.id">
+                                    <a href="#" class="edit" title="Edit Profile"><i class="fa fa-pencil"></i></a>
+                                    <a href="#" class="save-pro btn btn-primary" style="display: none;" (click)="saveAbout()">Save Changes</a>
+                                </div>
+                                <div class="about-txt">{{user.about}}</div>
+                            </div>
+                            <!--/.pf-about-box-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.pf-post-about -->
+
+            <div class="container">
+                <div class="page-wrapper clearfix">
+                    <div class="body-content">
+                        <div class="dashboard-grids">
+                            <div id="filters" class="clearfix">
+                                <div class="browsing-info">
+                                    <h3>Currently Browsing: All Activity</h3>
+                                </div>
+                                <div class="clearfix">
+                                   <div class="mob-filter">
+                                       <p class="navbar-text visible-xs-inline-block">Filter Browsing</p>
+                                       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#filterbar" aria-expanded="false" aria-controls="navbar">
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                          </button>
+                                      </div>
+                                      <div id="filterbar" class="navbar-collapse collapse">
+                                        <div class="filter-select">
+                                           <div class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">All <i class="fa fa-angle-down"></i></a>
+                                                <ul class="dropdown-menu">
+                                                      <li><a href="#">Uploads</a></li>
+                                                      <li><a href="#">Favorites</a></li>
+                                                      <li><a href="#">Comments</a></li>
+                                                      <li><a href="#">Stickers</a></li>
+                                                      <li><a href="#">Achievements</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <ul class="filter-tab">
+                                            <li class="selected"><a href="#">All</a></li>
+                                            <li><a href="#">Uploads</a></li>
+                                            <li><a href="#">Favorites</a></li>
+                                            <li><a href="#">Comments</a></li>
+                                            <li><a href="#">Stickers</a></li>
+                                            <li><a href="#">Achievements</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                </div>
+                                <!-- grid start -->
+                                <div class="grid">
+                                    <div class="grid-sizer"></div>
+                                    <div class="grid-item" *ngFor="let cmt of report" [ngClass]="[cmt.rtype === '1'?'upload-box': cmt.rtype === '2'?'cmt-box':'']">
+                                        <!-- Uploader activity -->
+                                        <div class="post-box-outer" *ngIf="cmt.rtype === '1'">
+                                            <div class="box-white">
+                                                <div class="sticker blue-sticker"><span>Upload</span></div>
+                                                <div class="box-top">
+                                                    <a routerLink="/wallpaper/{{cmt.id}}">
+                                                        <div class="post-thumb">
+                                                            <img src="{{s3Url}}{{cmt.s3_id}}" alt="">
+                                                        </div>
+                                                        <div class="post-time"><i class="fa fa-clock-o"></i> {{timeDifference(cmt.created_at)}}</div>
+                                                    </a>
+                                                </div>
+                                                <div class="author-header clearfix">
+                                                    <div class="admin-thumb imageFit">
+                                                        <a routerLink="/wallpaper/{{cmt.id}}"><img src="{{s3Url}}{{cmt.avatar}}" alt=""></a>
+                                                    </div>
+                                                    <div class="upload-info"><a routerLink="/profile/{{cmt.author}}"><strong>{{cmt.author}}</strong> Uploaded <strong>to the Track</strong></a></div>
+                                                </div>
+                                                <div class="upload-dir">
+                                                    <ul class="clearfix">
+                                                        <li *ngFor="let item of cuttle(cmt.list)"><a href="#">{{item}}</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Comment activity -->
+                                        <div class="post-box-outer" *ngIf="cmt.rtype === '2' || cmt.rtype === '3'">
+                                            <div class="box-white">
+                                                <div class="box-top" *ngIf="cmt.rtype === '3'">
+                                                    <div class="post-thumb">
+                                                        <a routerLink="/wallpaper/{{cmt.id}}"><img src="{{s3Url}}{{cmt.s3_id}}" alt=""></a>
+                                                    </div>
+                                                </div>
+                                                <div class="author-header clearfix">
+                                                    <div class="admin-thumb imageFit">
+                                                        <a routerLink="/wallpaper/{{cmt.id}}"><img src="{{s3Url}}{{cmt.avatar}}" alt=""></a>
+                                                    </div>
+                                                    <div class="upload-info"><a routerLink="/profile/{{cmt.author}}"><strong>{{cmt.author}}</strong></a> commented on <a routerLink="/profile/{{cmt.target}}"><strong>{{cmt.target}}</strong></a></div>
+                                                </div>
+                                                <blockquote class="dashboard-quote">
+                                                    <p>{{cmt.content}}.</p>
+                                                </blockquote>
+                                                <div class="quote-time"><i class="fa fa-clock-o"></i> {{timeDifference(cmt.created_at)}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="post-box-outer" *ngIf="cmt.rtype === '4'">
+                                            <div class="box-white">
+                                                <div class="sticker green-sticker"><span>Favourite</span></div>
+                                                <div class="box-top">
+                                                    <div class="post-thumb">
+                                                        <a routerLink="/profile/{{cmt.id}}"><img src="{{s3Url}}{{cmt.s3_id}}" alt=""></a>
+                                                    </div>
+                                                    <div class="post-time"><i class="fa fa-clock-o"></i> {{timeDifference(cmt.created_at)}}</div>
+                                                </div>
+                                                <h4 class="post-title">{{cmt.title}}</h4>
+                                                <div class="post-likes-row clearfix">
+                                                    <ul class="user-thumbs pull-left">
+                                                        <li class="imageFit"><a href="#" data-toggle="tooltip" data-placement="top" title="Robert Lee"><img src="assets/images/user-01.jpg" alt=""></a></li>
+                                                        <li class="imageFit"><a href="#" data-toggle="tooltip" data-placement="top" title="Cristina Griffith"><img src="assets/images/user-02.jpg" alt=""></a></li>
+                                                        <li class="imageFit"><a href="#" data-toggle="tooltip" data-placement="top" title="James Martinez"><img src="assets/images/user-03.jpg" alt=""></a></li>
+                                                        <li class="imageFit"><a href="#" data-toggle="tooltip" data-placement="top" title="Peter White"><img src="assets/images/user-04.jpg" alt=""></a></li>
+                                                        <li class="imageFit"><a href="#">+2</a></li>
+                                                    </ul>
+                                                    <span class="liked-icon pull-right"><i class="fa fa-thumbs-up"></i></span>
+                                                </div>
+                                                <div class="post-meta-row">
+                                                    <ul>
+                                                        <li><i class="fa fa-eye"></i> 9485</li>
+                                                        <li><i class="fa fa-thumbs-o-up"></i> 3092</li>
+                                                        <li><i class="fa fa-heart"></i> 383</li>
+                                                        <li><i class="fa fa-commenting"></i> 26</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>
+                                <!-- grid end -->
+                            <div class="post-loading"></div>
+                        </div>
+                        <!--/.dashboard-grids-->
+
+                    </div>
+                    <!--/.body-content-->
+                </div>
+            </div>
+        </div>
+        <!--/.profile-summary-->
+    </div>

@@ -1,0 +1,105 @@
+<div class="main-container">
+        <div class="gallery-header">
+            <div class="gal-banner imageFit">
+                <img src="assets/images/profile-banner.jpg" alt="">
+            </div>
+            <div class="gal-banner-txt">
+                <div class="container">
+                    <div class="heading-left">
+                        <h3>Gallery</h3>
+                        <p class="divide-top">Browse Our Wallpaper Galleries</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.group-header-->
+        
+
+        <div class="container">
+            <div class="page-wrapper clearfix">
+                <div class="body-content">
+                    <div class="gallery-grids">
+                        <div class="grid clearfix" >
+                            <div class="grid-item" *ngFor="let gallery of galleries">
+                                <div class="grid-block">
+                                    <div class="grid-thumb-outer">
+                                        <div class="grid-thumb imageFit">
+                                          <a (click)="onNavigate(gallery.name)" style="cursor: pointer;">
+                                            <img src="assets/{{gallery.header_image_url}}" alt="">
+                                            <span class="grid-title">{{gallery.name}}</span>
+                                          </a>
+                                      </div>
+                                    </div>
+                                    <div class="gallery-links">
+                                        <ul>
+                                            <li *ngFor="let group of groups">
+                                                <a href="#" *ngIf="gallery.id === group.gallery_id">
+                                                    {{group.name}}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.grid-item -->
+                        </div>
+                    </div><!--/.search-content-->
+                </div>
+                <!--/.body-content-->
+                <div class="right-sidebar">
+                    <div class="widget">
+                        <a href="#" class="join-desktopnexus">
+                            <div class="mascot-figure">
+                                <div id="circular" class="eyes">
+                                    <div class="left_eye">
+                                        <div class="pupil"></div>
+                                    </div>
+                                    <div class="right_eye">
+                                        <div class="pupil"></div>
+                                    </div>
+                                    <div class="lip"></div>
+                                </div>
+                            </div>
+                            <div class="join-txt">
+                                <h4>Join Desktop Nexus!</h4>
+                                <ul>
+                                    <li>Aenean aliquet lecus</li>
+                                    <li>Duis eget sceleris</li>
+                                    <li>Morbi mattis auctor</li>
+                                    <li>Phasellus usto</li>
+                                </ul>
+                            </div>
+                            <div class="join-footer">
+                                <span class="bullet"><i class="fa fa-angle-right"></i></span> Join for <strong>Free!</strong>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="widget">
+                        <div class="poster-block poster-300x250">
+                            <a href="#" target="_blank"><img src="assets/images/poster-sidebar-03.jpg" alt=""></a>
+                        </div>
+                    </div>
+
+                    <div class="widget">
+                        <div class="sidebar-tag-cloud">
+                            <h3 class="title">Popular Tag Cloud</h3>
+                            <div class="clouds">
+                                <a routerLink="/search/{{tag.name}}" *ngFor="let tag of tags" class="font-{{16+convertInt(tag.sum/300)}}">
+                                {{tag.name}}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget">
+                        <div class="poster-block poster-300x600">
+                            <a href="#" target="_blank"><img src="assets/images/poster-sidebar-02.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <!--/.right-sidebar-->
+            </div>
+        </div>
+    </div>

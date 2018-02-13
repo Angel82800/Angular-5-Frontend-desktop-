@@ -1,0 +1,34 @@
+.pf-thumb img, .pf-banner img {
+    width: 100%;
+}
+.pf-thumb {
+    background-color: #999;
+}
+.pf-banner {
+    background-color: #297fd8;
+}
+.imageFit img {
+    width: 100%;
+}
+@media only screen and (max-width:765px){
+    /*ul.pf-info-slide {
+        padding-left:0;
+    }
+    ul.pf-info-slide > li
+    {
+        position: relative;
+        float:left;
+        width: 100%;
+    }
+    ul.pf-info-slide > li .list-box {
+        border: none !important;
+    }
+    .pf-listing > ul > li:first-child .list-box {
+        border-top: 1px solid #dbdbdb;
+        padding-top: 10px;
+    }*/
+    .pf-thumb
+    {
+        top: -90px !important;
+    }
+}

@@ -1,0 +1,1355 @@
+<div class="main-container" #wallpaper>
+	<div class="container">
+       <div class="page-wrapper clearfix">
+           <div class="body-content">
+               <div class="content-poster-block">
+                   <a href="#" target="_blank"><img src="assets/images/poster-rect-01.jpg" alt=""></a>
+               </div>
+               <!--/.poster-block-->
+
+               <div class="wallpaper-block">
+                   <h1 class="pic-title">{{image.title}}</h1>
+                   <div class="pic-frame-outer">
+                       <div class="pic-share-toolbar">
+                         <div class="edit-pic" *ngIf="uploader.id === user.id">
+                            <a href="#" data-toggle="modal" data-target="#EditPic" (click)="setBackImg()"><i class="fa fa-pencil"></i> <span>Edit</span></a>
+                        </div>
+                        <ul class="clearfix">
+                            <li class="fb-like full-width" (click)="onlike(image.id)">
+                                <i class="mojs-icon">
+                                    <button class="icobutton like"><span class="fa fa-thumbs-o-up"></span> <span class="icobutton__text">Like</span></button>
+                                </i>
+                            </li>
+                            <li class="fav-share full-width">
+                                <i class="mojs-icon">
+                                    <button class="icobutton trigger-tree favorite" data-placement="right" data-container="body" data-title="Add to Favorites"><span class="fa fa-heart"></span> <span class="icobutton__text">Fav.</span></button>
+                                </i>
+                            </li>
+                            <li class="email-share full-width">
+                              <a href="#" data-toggle="modal" data-target="#shareDesktopNexus"><i class="fa fa-envelope-o"></i> <span>Email</span></a>
+                            </li>
+                            <li class="tw-share social-share">
+                             <button shareButton="twitter" [sbUrl]="'http://beta.desktopnexus.com'" [sbTitle]="image.title" [sbTags]="temptags" [sbShowCount]="true" (sbCount)="sumCounts($event)"><i class="fa fa-twitter"></i>
+                             </button>
+                           </li>
+                           <li class="fb-share social-share">
+                             <button shareButton="facebook" [sbUrl]="'http://beta.desktopnexus.com'" [sbTitle]="image.title" [sbDescription]="image.description" [sbImage]="s3Url+image.s3_id" [sbShowCount]="true" (sbCount)="sumCounts($event)"><i class="fa fa-facebook"></i></button>
+                           </li>
+                           <li class="pin-share social-share">
+                             <button shareButton="pinterest" [sbUrl]="'http://beta.desktopnexus.com'" [sbDescription]="image.description" [sbImage]="s3Url+image.s3_id" [sbShowCount]="true" (sbCount)="sumCounts($event)"><i class="fa fa-pinterest-p"></i>
+                             </button>
+                           </li>
+                           <li class="stumb-share social-share">
+                             <button shareButton="stumbleupon" [sbUrl]="'http://beta.desktopnexus.com'" [sbShowCount]="true" (sbCount)="sumCounts($event)"><i class="fa fa-stumbleupon"></i>
+                             </button>
+                           </li>
+                         </ul>
+                         <a href="#" class="report-bug" data-toggle="modal" data-target="#ReportPic"><i class="fa fa-flag-o"></i> Report</a>
+                       </div>
+                       <div class="pic-frame">
+                        <!-- <a href="#" data-toggle="modal" data-target="#DownloadBox"><img src="assets/images/christmas-wallpaper.jpg" alt=""></a> -->
+                        <a href="#" data-toggle="modal" data-target="#DownloadBox"><img src="{{s3Url_wallpaper}}{{image.thumbnail}}" alt=""></a>
+                    </div>
+                </div>
+                <div class="pic-meta-toolbar">
+                    <ul class="clearfix">
+                        <li class="fb-like" (click)="onlike(image.id)">
+                            <i class="mojs-icon">
+                                <button class="icobutton"><span class="fa fa-thumbs-o-up"></span> <span class="icobutton__text">{{ image.likes }}</span></button>
+                            </i>
+                        </li>
+                        <li class="fav-share">
+                            <i class="mojs-icon">
+                                <button class="icobutton trigger-tree" data-placement="bottom" data-container="body" data-title="Add to Favorites"><span class="fa fa-heart"></span> <span class="icobutton__text">{{ image.favorites }}</span></button>
+                            </i>
+                        </li>
+                        <li>
+                           <span class="meta-info link-share">
+                               <a href="#" data-toggle="modal" data-target="#shareDesktopNexus"><i class="fa fa-share-alt"></i> {{image.shares}}</a>
+                           </span>
+                       </li>
+                       <li class="download-btn-cont">
+                           <span class="download-counter">{{image.downloads}}</span>
+                           <a href="#" class="btn btn-success btn-lg download-btn" data-toggle="modal" data-target="#DownloadBox">Free Download</a>
+                       </li>
+                   </ul>
+               </div>
+           </div>
+           <!--/.wallpaper-block-->
+
+           <div class="content-poster-block">
+               <a href="#" target="_blank"><img src="assets/images/poster-rect-02.jpg" alt=""></a>
+           </div>
+           <!--/.poster-block-->
+
+           <div class="comment-section">
+               <div class="cmt-box bd_parent">
+                   <h3 class="cmt-heading">Write Comment</h3>
+                   <div class="form-group">
+                       <span class="cmt-counter"><span id="cmt-counter">0</span>/500</span>
+
+                       <div class="st-txtbox">
+                        <span class="cmt-attached-sticker">
+                            <span class="st-img" #stick></span>
+                            <span class="st-clear" data-toggle="tooltip" data-placement="top" title="Remove"><i class="fa fa-times-circle" #stclear></i></span>
+                        </span>
+                        <textarea id="cmt-field" class="form-control bd_textarea" rows="2" maxlength="500" placeholder="Leave a comment..." [(ngModel)]="newcmt" #ctrl="ngModel" required [disabled]="is_ban"></textarea>
+                    </div>
+                </div>
+                <div class="cmt-btns">
+                   <div class="row">
+                       <div class="col-xs-6 col-md-12 col-lg-6">
+                           <div class="custom-checkbox noselect">
+                              <input id="fb-check" name="check" value="" checked="" type="checkbox">
+                              <label for="fb-check"><i class="fa fa-facebook-square"></i><span>Facebook</span></label>
+                          </div>
+                          <div class="custom-checkbox noselect">
+                              <input id="tw-check" name="check" value="" type="checkbox">
+                              <label for="tw-check"><i class="fa fa-twitter-square"></i><span>Twitter</span></label>
+                          </div>
+                      </div>
+                      <div class="col-xs-6 col-md-12 col-lg-6">
+                       <div class="row">
+                           <div class="col-xs-3 col-sm-4 col-md-7">
+                               <a class="attach-sticker noselect" data-toggle="modal" data-target="#AttachSticker"><span class="icon-holder"></span> Attach a Sticker</a>
+                           </div>
+                           <div class="col-xs-9 col-sm-8 col-md-5">
+                               <button type="submit" class="btn btn-primary btn-block btn-lg" (click)="cmtpost(stick, newcmt)" [disabled]="!newcmt" [disabled]="is_ban">Post</button>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+       <ol class="cmt-list">
+           <li *ngFor="let cmt of cmtlists" id="cList_{{cmt.id}}">
+            <div class="get-cmt" *ngIf="cmt.parent_id == 0">
+               <div class="cmt-author imageFit">
+                   <a href="#"><img src="{{s3Url_wallpaper}}{{cmt.author_img}}" alt=""></a>
+               </div>
+               <div class="cmt-block clearfix uploader-cmt">
+                <div class="cmt-sticker" *ngIf="cmt.sticker">
+                    <img src="{{cmt.sticker}}" alt="">
+                </div>
+                <div class="cmt-header clearfix">
+                   <div class="cmt-author-info">
+                    <span class="cmt-name">{{cmt.author_name}} said:</span>
+                    <span class="uploader-tag" *ngIf="image.upload_by == cmt.author_id">Uploader</span>
+                </div>
+                <div class="cmt-meta">
+                   <span class="cmt-time"><i class="fa fa-clock-o"></i>{{cmt.now}}</span>
+                   <a class="cmt-link" data-toggle="modal" data-target="#ShareBox"><i class="fa fa-link"></i></a>
+                   <button type="button" class="btn btn-primary btn-cmt-reply" (click)="replycmt(cmt.id)">Reply</button>
+               </div>
+           </div>
+           <div class="cmt-body">
+               <p>{{cmt.content}}</p>
+           </div>
+       </div>
+   </div>
+   <ul class="cmt-reply-list" *ngFor="let reply of cmtlists">
+       <li *ngIf="cmt.id == reply.parent_id">
+        <div class="get-cmt">
+            <div class="cmt-author imageFit">
+                <a href="#"><img src="{{s3Url_wallpaper}}{{reply.author_img}}" alt=""></a>
+            </div>
+            <div class="cmt-block clearfix">
+                <div class="cmt-sticker" *ngIf="cmt.sticker">
+                    <img src="{{cmt.sticker}}" alt="">
+                </div>
+                <div class="cmt-header clearfix">
+                   <div class="cmt-author-info">
+                    <span class="cmt-name">{{reply.author_name}} said:</span>
+                    <span class="uploader-tag" *ngIf="image.upload_by == reply.author_id">Uploader</span>
+                </div>
+                <div class="cmt-meta">
+                   <span class="cmt-time"><i class="fa fa-clock-o"></i> {{cmt.now}}</span>
+                   <a href="#" class="cmt-link"><i class="fa fa-link"></i></a>
+                   <!-- <button type="button" class="btn btn-primary btn-cmt-reply">Reply</button> -->
+               </div>
+           </div>
+           <div class="cmt-body">
+            <p>{{reply.content}}</p>
+        </div>
+    </div>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+<!-- <a class="cmt-load-more cursor-like" (click)="getCmtData()" *ngIf="counter>=cmtlists.length">Load More</a> -->
+
+</div>
+<!--/.comment-section-->
+
+<div class="popular-listing-rows">
+   <div class="listing-row" *ngFor="let cmt of recent_group">
+       <h4 class="list-heading">Popular in <a routerLink="/group/{{toLower(cmt.key)}}">{{cmt.key}}</a></h4>
+       <div class="list-blocks-wrapper">
+         <div class="list-block">
+          <ul class="popu-list-1">
+            <li *ngFor="let index of cmt.object">
+             <div class="list-thumb imageFit">
+               <a routerLink="/wallpaper/{{index.id}}"><img src="{{s3Url_wallpaper}}{{index.s3_id}}" alt=""></a>
+             </div>
+             <p class="list-title"><a routerLink="/wallpaper/{{index.id}}">{{index.title}}</a></p>
+           </li>
+         </ul>
+       </div>
+       <a href="#" class="see-more" *ngIf="isMore(cmt.object)"><i class="fa fa-picture-o"></i> <span>See More</span></a>
+     </div>
+   </div>
+  <!--/.listing-row-->
+</div>
+<!--/.popular-listing-rows-->
+
+<div class="content-poster-block" style="margin-bottom:0">
+   <a href="#" target="_blank"><img src="assets/images/poster-rect-03.jpg" alt=""></a>
+</div>
+<!--/.poster-block-->
+
+</div>
+<!--/.body-content-->
+<div class="right-sidebar">
+   <div class="widget">
+       <div class="poster-block poster-300x250">
+           <a href="#" target="_blank"><img src="assets/images/poster-sidebar-01.jpg" alt=""></a>
+       </div>
+   </div>
+   <div class="widget">
+       <div class="love-tip">
+           <a href="#" class="tip-block" data-toggle="modal" data-target="#TipBox">
+               <span class="tip-icon"></span>
+               <span class="tip-heading">Love this image?</span>
+               <span class="sub-heading">Send a gift to show gratitude!</span>
+           </a>
+       </div>
+   </div>
+   <!--/Widget .love-tip-->
+
+   <div class="widget">
+       <div class="profile-block">
+           <div class="pf-block-header">
+               <div class="pf-upload-pic imageFit user-banner">
+                    <img src="{{s3Url_wallpaper}}{{uploader.cover_img}}"  />
+               </div>
+               <div class="pf-upload-info clearfix">
+                   <strong class="pull-left">Uploaded By</strong>
+                   <span class="pull-right up-time"><i class="fa fa-clock-o"></i>{{(image.now)}}</span>
+               </div>
+           </div>
+           <div class="pf-block-body">
+               <div class="pf-user-info clearfix">
+                   <div class="user-thumb imageFit user-avatar">
+                       <img src="{{s3Url_wallpaper}}{{uploader.avatar}}"  />
+                   </div>
+                   <div class="pf-btn-cont">
+                    <h3 class="pf-name"><a routerLink="/profile/{{uploader.username}}">{{ uploader.firstname }} {{ uploader.lastname }}</a></h3>
+                    <button type="button" [disabled]="uploader.id === user.id" class="btn btn-primary" (click)="onFollow(uploader.id, user.id)"><span class="icon-holder"><i class="fa fa-plus"></i></span> Follow</button>
+                    <button type="button" [disabled]="uploader.id === user.id" class="btn btn-success" data-toggle="modal" data-target="#UserMessageBox"><span class="icon-holder"><i class="fa fa-envelope"></i></span> Message</button>
+                </div>
+            </div>
+        </div>
+        <div class="pf-block-footer">
+           <ul class="clearfix">
+               <li>
+                   <div class="user-status pf-level">
+                    <div class="icon-holder"></div>
+                    <div class="counter">{{user.level}}</div> <span>Level</span>
+                </div>
+            </li>
+            <li>
+               <div class="user-status pf-sticker">
+                <div class="icon-holder"></div>
+                <div class="counter">12</div> <span>Stickers</span>
+            </div>
+        </li>
+        <li>
+           <div class="user-status pf-achieve">
+            <div class="icon-holder"></div>
+            <div class="counter">09</div> <span>Achievements</span>
+        </div>
+    </li>
+</ul>
+</div>
+</div>
+</div>
+<!--/Widget .profile-block-->
+
+<div class="widget" *ngIf="currentImageGroups.length!=0">
+   <h3 class="widget-title">Wallpaper Groups</h3>
+   <div class="wallpaper-group">
+       <ul class="clearfix">
+           <li *ngFor="let cmt of currentImageGroups">
+               <div class="pic-block">
+                   <div class="pic-thumb imageFit">
+                       <a routerLink="/group/{{toLower(cmt.name)}}"><img src="{{s3Url}}{{cmt.s3_id}}" alt=""></a>
+                   </div>
+                   <h6 class="pic-title">{{cmt.name}}</h6>
+               </div>
+           </li>
+       </ul>
+   </div>
+</div>
+<!--/Widget .wallpaper-group-->
+
+<div class="widget" *ngIf="currentImageGroups.length!=0 || temptags.length!=0">
+   <div class="poster-block poster-300x600">
+       <a href="#" target="_blank"><img src="assets/images/poster-sidebar-02.jpg" alt=""></a>
+   </div>
+</div>
+
+<div class="widget" *ngIf="temptags.length!=0">
+   <h3 class="widget-title">Tags</h3>
+   <div class="tags-list">
+       <ul class="clearfix">
+       <!-- link to the Tag page -->
+        <li *ngFor="let temptag of temptags"><a routerLink="/tags/{{toLower(temptag)}}">{{ temptag }}</a></li>
+    </ul>
+</div>
+</div>
+<!--/Widget .wallpaper-group-->
+
+<div class="widget">
+   <div class="pic-data-table">
+       <ul class="clearfix">
+           <li><strong>Orig. Size</strong></li>
+           <li><strong>Orig. Resolution</strong></li>
+           <li><span>{{ (image.file_size)/1024 | number: '.1-2' }} KB</span></li>
+           <li><span>{{ image.orig_width }} X {{ image.orig_height }}</span></li>
+       </ul>
+   </div>
+</div>
+<!--/Widget .pic-data-table-->
+
+</div>
+<!--/.right-sidebar-->
+</div>
+</div>
+</div>
+<!--/.main-container-->
+<!-- Download Box -->
+<div class="modal fade download-box" id="DownloadBox" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="download-page">
+         <div class="flexbox-parent">
+            <header class="fill-area flexbox-item-grow dwn-header">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                      <a class="navbar-brand" href="#"><img src="assets/images/dn-line-logo.png" alt=""></a>
+                  </div>
+                  <div class="header-share-icons">
+                    <ul>
+                        <li class="fb-like full-width" (click)="onlike(image.id)">
+                            <i class="mojs-icon">
+                                <button class="icobutton"><span class="fa fa-thumbs-o-up"></span> <span class="icobutton__text">Like</span></button>
+                            </i>
+                        </li>
+                        <li class="fav-share full-width">
+                            <i class="mojs-icon">
+                                <button class="icobutton trigger-tree" data-placement="bottom" data-container="body" data-title="Add to Favorites"><span class="fa fa-heart"></span> <span class="icobutton__text">Fav.</span></button>
+                            </i>
+                        </li>
+                        <li class="social-share">
+                            <a href="#" data-toggle="modal" data-target="#shareDesktopNexus"><i class="fa fa-share-alt"></i> <span>Share</span></a>
+                        </li>
+                        <li class="pic-download">
+                            <a (click)="downloadImage()"><i class="fa fa-download"></i> <span>Download</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header-tools">
+                    <ul>
+                        <li class="tool-drop static-drop dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-double-down"></i></a>
+                            <div class="dropdown-menu">
+                                <div class="adv-opt-drop">
+                                    <h4>Advanced Download Options</h4>
+                                    <div class="opt-blocks">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="opt-block">
+                                                    <h5>Standard</h5>
+                                                    <ul>
+                                                        <li><a (click)="imageResize(800, 600)">800x600</a></li>
+                                                        <li><a (click)="imageResize(1024, 768)">1024x768</a></li>
+                                                        <li><a (click)="imageResize(1280, 960)">1280x960</a></li>
+                                                        <li><a (click)="imageResize(1280, 1024)">1280x1024</a></li>
+                                                        <li><a (click)="imageResize(1600, 1200)">1600x1200</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="opt-block">
+                                                    <h5>Widescreen</h5>
+                                                    <ul>
+                                                        <li><a (click)="imageResize(1280, 800)">1280x800</a></li>
+                                                        <li><a (click)="imageResize(1440, 900)">1440x900</a></li>
+                                                        <li><a (click)="imageResize(1680, 1050)">1680x1050</a></li>
+                                                        <li><a (click)="imageResize(1920, 1200)">1920x1200</a></li>
+                                                        <li><a (click)="imageResize(2500, 1600)">2560x1600</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="opt-block">
+                                                    <h5>Other Options</h5>
+                                                    <ul>
+                                                        <li><a (click)="imageResize(image.orig_width, image.orig_height)">Original Resolution</a></li>
+                                                        <li><a (click)="imageResize(1920, 1080)">1080p</a></li>
+                                                        <li><a (click)="imageResize(1280, 720)">720p</a></li>
+                                                        <li><a (click)="imageResize(750, 1334)">iPhone</a></li>
+                                                        <li><a (click)="imageResize(480, 272)">PSP</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="tool-mob static-drop dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-mobile"></i></a>
+                            <div class="dropdown-menu">
+                                <div class="mob-link-drop">
+                                 <p class="ph-lnk-txt">Use this image as your cell phone background! Enter your mobile phone number to send:</p>
+                                 <div class="input-group">
+                                  <input class="form-control" id="phonelink" type="text" placeholder="Enter Mobile No.">
+                                  <span class="input-group-btn">
+                                    <button class="btn" type="button">Send</button>
+                                </span>
+                                <span id="valid-msg" class="hide"><i class="fa fa-check-circle"></i></span>
+                                <span id="error-msg" class="hide"><i class="fa fa-times-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="tool-dsk">
+                    <a href="#"><i class="fa fa-desktop"></i></a>
+                </li>
+                <li class="tool-close">
+                    <a href="#" data-dismiss="modal"><i class="fa fa-times"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="fill-area flexbox-item-grow dwn-body">
+    <div class="dwn-leftpan" *ngIf="0">
+        <div class="close-left">
+            <a href="#"><span class="close-icon"></span> Hide Ad</a>
+        </div>
+        <div class="leftpan-scroll">
+            <img src="assets/images/GetReady_160x600_v8.gif" alt="">
+        </div>
+    </div>
+    <div class="dwn-rightpan">
+       <div class="img-aligner">
+          <div class="img-pos-center">
+              <div class="img-placeholder">
+                  <img src="{{preview_image}}" alt="" />
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="fill-area flexbox-item-grow dwn-footer" *ngIf="0">
+    <div class="footer-block">
+        <img src="assets/images/GetReady_728x90_v3.gif" alt="">
+        <div class="close-bottom">
+            <a href="#"><span class="close-icon"></span> Close Ad</a>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- // Download Box -->
+<!-- Edit Pic -->
+<div class="modal fade editpic-modal" id="EditPic" tabindex="-1" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit Wallpaper: <strong class="text-primary">19778546</strong></h4>
+    </div>
+    <div class="modal-body">
+     <div class="edit-pic-row">
+         <div class="row">
+             <div class="col-sm-4">
+                 <!-- <div class="pic-block imageFit" style='background-image: url("{{s3Url}}{{image.s3_id}}");'> -->
+                 <div class="pic-block imageFit cus_img">
+                     <!-- <img src="assets/images/christmas-wallpaper.jpg" alt=""> -->
+                     <img src="{{s3Url_wallpaper}}{{image.thumbnail}}" alt="">
+                     <!-- {{image}} -->
+                 </div>
+             </div>
+             <div class="col-sm-8">
+                 <div class="pic-meta">
+                     <div class="form-group">
+                         <label class="control-label">Title</label>
+                         <input type="text" class="form-control" value="{{image.title}}" #title>
+                     </div>
+                     <div class="form-group">
+                        <label class="control-label">Tags</label>
+                        <input type="text" value="" #tagname id="edit-tags">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="edit-pic-group">
+     <div class="group-heading"><span class="text-uppercase">Groups</span></div>
+     <div class="group-blocks">
+      <div class="max-count">Next, select up to five relevant groups for this image</div>
+      <ul class="clearfix">
+         <li *ngFor="let currentimageGroup of currentImageGroups">
+             <div class="group-block">
+                 <div class="group-thumb imageFit">
+                     <img src="{{s3Url}}{{currentimageGroup.s3_id}}" alt="">
+                 </div>
+                 <h5>{{currentimageGroup.name}}</h5>
+             </div>
+         </li>
+         <li *ngFor="let nonImageGroup of nonImageGroups">
+             <div class="group-block">
+                 <a class="browse-group-link">Select</a>
+             </div>
+         </li>
+     </ul>
+     <div class="modal-select-group">
+        <a href="#" class="group-close"><span aria-hidden="true">&times;</span></a>
+        <h4 class="modal-title">Select a Group You Follow:</h4>
+        <select class="selectpicker group-select" data-show-subtext="false" data-live-search="true" #category [(ngModel)]="selectedValue">
+            <!-- <option *ngFor="let imageGroup of imageGroups" data-content='<img src="assets/images/wallpaper-02.jpg" alt=""> <span class="sub-text">{{imageGroup.name}}</span>'>{{imageGroup.name}}</option> -->
+            <!-- Group / Gallery ngCursive -->
+            <option *ngFor="let imageGroup of imageGroups">
+                <div>
+                    <img src="{{s3Url}}{{imageGroup.s3_id}}" alt="">
+                    {{imageGroup.name}}
+                </div>
+            </option>
+        </select>
+        <div class="modal-btn">
+          <button type="button" class="btn btn-danger" (click)="removeGroup(category.value)">Remove</button>
+          <button type="button" class="btn btn-success close-group-modal" (click)="saveGroup(category.value)">Select</button>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+    <a class="del-pic-link" (click)="imageDelete(image.id)">Delete Wallpaper</a>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+    <button type="button" class="btn btn-success" (click)="changeInfo(tagname.value, title.value)">Save</button>
+</div>
+</div>
+</div>
+</div>
+<!-- // Edit Pic -->
+
+<!-- Attach Sticker -->
+<div class="modal fade modal-sticker" id="AttachSticker" tabindex="-1" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Your Sticker Collection</h4>
+    </div>
+    <div class="st-header text-center">
+      <h3>You own 74 stickers!</h3>
+      <p>3/48 completed sheets</p>
+  </div>
+  <!-- Sticker tabs -->
+  <div class="sticker-tab-panel">
+   <div class="st-block">
+
+    <div class="st-recent-box">
+        <div class="box-heading"><span class="text-uppercase">Recent</span></div>
+        <div class="st-recent-listing">
+            <ul class="st-recent-ul">
+                <li>
+                    <div class="badge-block">
+                        <div class="sticker-01 st-4-msg">
+                            <img src="assets/images/sticker-01.png" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="badge-block">
+                        <div class="sticker-02 st-4-msg">
+                            <img src="assets/images/sticker-02.png" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="badge-block">
+                        <div class="sticker-03 st-4-msg">
+                            <img src="assets/images/sticker-03.png" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="badge-block">
+                        <div class="sticker-01 st-4-msg">
+                            <img src="assets/images/sticker-01.png" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="badge-block">
+                        <div class="sticker-02 st-4-msg">
+                            <img src="assets/images/sticker-02.png" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="badge-block">
+                        <div class="sticker-03 st-4-msg">
+                            <img src="assets/images/sticker-03.png" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="badge-block">
+                        <div class="sticker-01 st-4-msg">
+                            <img src="assets/images/sticker-01.png" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="badge-block">
+                        <div class="sticker-02 st-4-msg">
+                            <img src="assets/images/sticker-02.png" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="badge-block">
+                        <div class="sticker-03 st-4-msg">
+                            <img src="assets/images/sticker-03.png" alt="">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="sticker-list">
+        <ul class="list-group clearfix">
+            <li>
+                <div class="st-frame-outer">
+                    <div class="sticker-box">
+                        <img src="assets/images/sticker-01.png" alt="">
+                    </div>
+                    <span class="st-counter">7/85</span>
+                </div>
+                <div class="st-title">Sheet Title 1</div>
+            </li>
+            <li>
+                <div class="st-frame-outer">
+                    <div class="sticker-box">
+                        <img src="assets/images/sticker-02.png" alt="">
+                    </div>
+                    <span class="st-counter">15/54</span>
+                </div>
+                <div class="st-title">Amet porttitor nec massa</div>
+            </li>
+            <li>
+                <div class="st-frame-outer">
+                    <div class="sticker-box">
+                        <img src="assets/images/sticker-03.png" alt="">
+                    </div>
+                    <span class="st-counter">4/12</span>
+                </div>
+                <div class="st-title">Sheet Title 3</div>
+            </li>
+            <li>
+                <div class="st-frame-outer">
+                    <div class="sticker-box">
+                        <img src="assets/images/sticker-01.png" alt="">
+                    </div>
+                    <span class="st-counter">15/54</span>
+                </div>
+                <div class="st-title">Sheet Title 4</div>
+            </li>
+            <li>
+                <div class="st-frame-outer">
+                    <div class="sticker-box">
+                        <img src="assets/images/sticker-02.png" alt="">
+                    </div>
+                    <span class="st-counter">15/54</span>
+                </div>
+                <div class="st-title">Sheet Title 5</div>
+            </li>
+            <li>
+                <div class="st-frame-outer">
+                    <div class="sticker-box">
+                        <img src="assets/images/sticker-03.png" alt="">
+                    </div>
+                    <span class="st-counter">15/54</span>
+                </div>
+                <div class="st-title">Sheet Title 6</div>
+            </li>
+            <li>
+                <div class="st-frame-outer">
+                    <div class="sticker-box">
+                        <img src="assets/images/sticker-01.png" alt="">
+                    </div>
+                    <span class="st-counter">15/54</span>
+                </div>
+                <div class="st-title">Sheet Title 7</div>
+            </li>
+            <li>
+                <div class="st-frame-outer">
+                    <div class="sticker-box">
+                        <img src="assets/images/sticker-02.png" alt="">
+                    </div>
+                    <span class="st-counter">15/54</span>
+                </div>
+                <div class="st-title">Sheet Title 8</div>
+            </li>
+            <li>
+                <div class="st-frame-outer">
+                    <div class="sticker-box">
+                        <img src="assets/images/sticker-03.png" alt="">
+                    </div>
+                    <span class="st-counter">15/54</span>
+                </div>
+                <div class="st-title">Sheet Title 9</div>
+            </li>
+            <li>
+                <div class="st-frame-outer">
+                    <div class="sticker-box">
+                        <img src="assets/images/sticker-01.png" alt="">
+                    </div>
+                    <span class="st-counter">15/54</span>
+                </div>
+                <div class="st-title">Sheet Title 10</div>
+            </li>
+            <li>
+                <div class="st-frame-outer">
+                    <div class="sticker-box">
+                        <img src="assets/images/sticker-02.png" alt="">
+                    </div>
+                    <span class="st-counter">15/54</span>
+                </div>
+                <div class="st-title">Sheet Title 11</div>
+            </li>
+            <li>
+                <div class="st-frame-outer">
+                    <div class="sticker-box">
+                        <img src="assets/images/sticker-03.png" alt="">
+                    </div>
+                    <span class="st-counter">15/54</span>
+                </div>
+                <div class="st-title">Sheet Title 12</div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="st-block">
+    <div class="st-single-block">
+        <div class="st-breadcrumb">
+            <span class="st-back"><i class="fa fa-angle-left"></i> Back</span>
+            <h4 class="st-single-title">Sheet Title</h4>
+        </div>
+        <div class="sticker-list">
+            <ul class="list-single clearfix">
+                <li>
+                    <div class="sticker-box st-4-msg">
+                        <img src="assets/images/sticker-01.png" alt="">
+                    </div>
+                </li>
+                <li>
+                    <div class="sticker-box st-4-msg">
+                        <img src="assets/images/sticker-02.png" alt="">
+                    </div>
+                </li>
+                <li>
+                    <div class="sticker-box st-4-msg">
+                        <img src="assets/images/sticker-03.png" alt="">
+                    </div>
+                </li>
+                <li>
+                    <div class="sticker-box st-gray st-store-link">
+                        <img src="assets/images/sticker-01.png" alt="">
+                    </div>
+                </li>
+                <li>
+                    <div class="sticker-box st-gray st-store-link">
+                        <img src="assets/images/sticker-02.png" alt="">
+                    </div>
+                </li>
+                <li>
+                    <div class="sticker-box st-gray st-store-link">
+                        <img src="assets/images/sticker-03.png" alt="">
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+<!-- // Sticker tabs -->
+
+<div class="st-store-pop">
+  <div class="row">
+      <div class="col-sm-8">
+          <div class="store-msg">Visit the store to get more stickers?</div>
+      </div>
+      <div class="col-sm-4">
+        <div class="store-btns">
+          <a href="#" class="btn btn-default btn-st-cancel">No</a>
+          <a href="#" class="btn btn-success" target="_blank">Yes</a>
+      </div>
+  </div>
+</div>
+</div>
+
+<div class="modal-footer">
+ <div class="row">
+     <div class="col-xs-6 text-left">
+         <a href="#" class="btn btn-primary" target="_blank">Get More Stickers</a>
+     </div>
+     <div class="col-xs-6 text-right">
+         <button type="button" class="btn btn-success st-attach-btn"><i class="fa fa-paperclip" style="margin-right:3px"></i> Attach</button>
+     </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+<!-- // Attach Sticker -->
+
+<!-- Report Pic -->
+<div class="modal fade reportpic-modal" id="ReportPic" tabindex="-1" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Report a Wallpaper Violation</h4>
+    </div>
+    <div class="modal-body">
+     <div class="report-wallpaper">
+         <div class="row">
+             <div class="col-sm-4">
+                 <div class="report-thumb">
+                     <img src="assets/images/christmas-wallpaper.jpg" alt="" class="img-responsive">
+                 </div>
+
+             </div>
+             <div class="col-sm-8">
+                 <div class="report-meta">
+                     Wallpaper ID: <strong>{{image.id}}</strong>
+                 </div>
+                 <div class="report-msg">
+                     <p><em>(If you feel this wallpaper is in violation of the Desktop Nexus <a href="#"><strong>submission guidelines</strong></a>, please use the following form to have it manually reviewed)</em></p>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <div class="report-blocks">
+        <h3 class="rp-title">How is this image in violation?</h3>
+        <div class="panel-group" id="accordion">
+          <div class="panel">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#reason1">Incorrect Gallery/Category</a>
+            </h4>
+        </div>
+        <div id="reason1" class="panel-collapse collapse">
+          <div class="panel-body">
+            <h4 class="reason-txt">Reason: Miscategorized Wallpaper</h4>
+            <p>Currently this wallpaper is categorized in:</p>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a class="m_gallery" href="#">Abstract</a></li>
+              <li class="breadcrumb-item active"><span class="m_category">Fantasy</span></li>
+          </ol>
+          <p>Where do you feel is more accurate?</p>
+          <div class="form-inline">
+              <div class="form-group">
+                <label for="email">Gallery:</label>
+                <div class="custom-select">
+                    <select class="form-control c_gallery">
+                        <option value="abstract">Abstract</option><option value="aircraft">Aircraft</option><option value="animals">Animals</option><option value="anime">Anime</option><option value="architecture">Architecture</option><option value="boats">Boats</option><option value="cars">Cars</option><option value="entertainment">Entertainment</option><option value="motorcycles">Motorcycles</option><option value="nature" selected="">Nature</option><option value="people">People</option><option value="space">Space</option><option value="sports">Sports</option><option value="technology">Technology</option><option value="videogames">Video Games</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Category:</label>
+                <div class="custom-select">
+                    <select class="form-control c_category"><option>Beaches</option><option>Bugs</option><option>Canyons</option><option>Coral Reefs</option><option>Deserts</option><option>Fields</option><option>Flowers</option><option>Forces of Nature</option><option>Forests</option><option>Grass</option><option>Greenroofs</option><option>Lakes</option><option>Mountains</option><option>Oceans</option><option>Rainbows</option><option>Rivers</option><option>Sky</option><option>Sunsets</option><option>Waterfalls</option><option>Winter</option><option selected="">Other</option></select>
+                </div>
+            </div>
+        </div>
+        <div class="btn-cont">
+            <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
+            <button class="btn btn-primary" (click)="reportImage(image.id, 0)">Submit Report</button>
+        </div>
+    </div>
+</div>
+</div>
+<!-- // Incorrect Gallery/Category -->
+
+<div class="panel">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#reason2">Inaccurate or Misleading Tag</a>
+    </h4>
+</div>
+<div id="reason2" class="panel-collapse collapse">
+  <div class="panel-body">
+    <h4 class="reason-txt">Reason: Inaccurate Tag</h4>
+    <p>Which tag on this wallpaper do you feel is misleading or inaccurate?</p>
+    <p><span *ngFor="let temptag of temptags" (click)="reportImage(image.id,1,temptag)">{{ temptag }}</span></p>
+    <div class="btn-cont">
+        <button type="button" data-dismiss="modal" class="btn btn-default">Nevermind - Close This Window</button>
+    </div>
+</div>
+</div>
+</div>
+<!-- // Inaccurate or Misleading Tag -->
+
+<div class="panel">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#reason3">Adult Content <span>(Excessively Suggestive or Sexual / Nudity)</span></a>
+    </h4>
+</div>
+<div id="reason3" class="panel-collapse collapse">
+  <div class="panel-body">
+    <h4 class="reason-txt">Reason: Adult Content</h4>
+    <p><strong class="text-danger">ABSOLUTELY NO NUDITY IS PERMITTED! PLEASE REPORT ANY IMAGES WITH NUDITY.</strong></p>
+    <p>Desktop Nexus is a family-friendly site. As a rule of thumb, if the image wouldn't be appropriate at a normal, American beach, it's probably too suggestive. The intention behind the photo should also be considered. If the purpose of the photo is sexual appeal, or it is excessively suggestive / provocative, the image is probably not appropriate for Desktop Nexus. We hold all images to the same criteria, regardless if they are photography, photoshopped, 3d-rendered, animated/anime, etc.</p>
+    <div class="custom-checkbox noselect">
+        <input type="checkbox" id="nudity" value="{{is_check[0]}}">
+        <label (click)="update_checkBox(0)" class="nudity">Yes, this image contains nudity or is excessively suggestive/procative/sexual.</label>
+    </div>
+    <div class="btn-cont">
+        <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
+        <button class="btn btn-primary" [disabled]="!is_check[0]" (click)="reportImage(image.id,2)">Submit Report</button>
+    </div>
+</div>
+</div>
+</div>
+<!-- // Adult Content -->
+
+<div class="panel">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#reason4">Offensive Theme</a>
+    </h4>
+</div>
+<div id="reason4" class="panel-collapse collapse">
+  <div class="panel-body">
+    <h4 class="reason-txt">Reason: Offensive Content</h4>
+    <p>Please do not report wallpapers as offensive if the image offends you because of religious beliefs or political preference. We support freedom of speech and choose not to take sides on such matters. Please read our community Code of Conduct for more details.</p>
+    <p>Images should be reported as offensive if they contain explicit words, symbols, signs, actions, or implications.</p>
+    <div class="custom-checkbox noselect">
+        <input type="checkbox" id="offensive" value="{{is_check[1]}}">
+        <label (click)="update_checkBox(1)" class="offensive">Yes, this image is offensive to me for non-religious and non-political reasons.</label>
+    </div>
+    <div class="btn-cont">
+        <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
+        <button class="btn btn-primary" [disabled]="!is_check[1]" (click)="reportImage(image.id,3)">Submit Report</button>
+    </div>
+</div>
+</div>
+</div>
+<!-- // Offensive Theme -->
+
+<div class="panel">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#reason5">Duplicate of Existing Wallpaper</a>
+    </h4>
+</div>
+<div id="reason5" class="panel-collapse collapse">
+  <div class="panel-body">
+    <h4 class="reason-txt">Reason: Duplicate of Existing Wallpaper</h4>
+    <p>Desktop Nexus doesn't permit duplicates of the same image. If you've found the EXACT same wallpaper uploaded previously, report one of them and if our community agrees, they'll be merged together, leaving only the first wallpaper uploaded.</p>
+    <p>What is the Wallpaper ID of the DUPLICATE image uploaded?</p>
+    <div class="btn-cont">
+        <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
+        <button class="btn btn-primary" (click)="reportImage(image.id,3)">Submit Report</button>
+    </div>
+</div>
+</div>
+</div>
+<!-- // Duplicate of Existing Wallpaper -->
+
+<div class="panel">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#reason6">DMCA Copyright Violation</a>
+    </h4>
+</div>
+<div id="reason6" class="panel-collapse collapse">
+  <div class="panel-body">
+    <h4 class="reason-txt">DMCA Claim Request: Wallpaper #47962</h4>
+    <p>In order to legally enact a DMCA claim with DesktopNexus.com, we require the following questions to be answered completely and truthfully. This is in accordance with the <a href="http://en.wikipedia.org/wiki/Digital_Millennium_Copyright_Act" target="_blank"><strong>Digital Millenium Copyright Act of 1998</strong></a> (United States).</p>
+    <p>As soon as this claim is submitted to us and approved, the we will immediately remove the wallpaper(s) from our servers.</p>
+    <p><strong class="text-danger">DO NOT submit this form unless you are the legal copyright holder (original artist) or a legal agent acting on their behalf. Invoking DMCA under false pretense is an act of purjury and illegal under section 501 of US DMCA law.</strong></p>
+    <p>If you have any further questions about this process, feel free to <a href="#"><strong>contact us</strong></a>.</p>
+</div>
+</div>
+</div>
+<!-- // DMCA Copyright Violation -->
+
+<div class="panel">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#reason7">No Problem - I'm Just Testing</a>
+    </h4>
+</div>
+<div id="reason7" class="panel-collapse collapse">
+  <div class="panel-body">
+    <h4 class="reason-txt">Reason: No Problem - Testing</h4>
+    <p>Thanks for trying out our reporting system. Your eagerness to help is appreciated! :)</p>
+    <p>There are many new wallpapers uploaded to Desktop Nexus every day, so we cannot possibly see them all ourselves. This reporting system will allow the members to be our eyes and ears, allowing us to focus our energy on the wallpapers that are the most controversial.</p>
+    <div class="btn-cont">
+        <button type="button" data-dismiss="modal" class="btn btn-default">Okay - Close This Window</button>
+    </div>
+</div>
+</div>
+</div>
+<!-- // No Problem - I'm Just Testing -->
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- // Edit Pic -->
+<!-- Share DesktopNexus -->
+<div class="modal fade share-modal" id="shareDesktopNexus" tabindex="-1" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Share this image with a friend!</h4>
+        <div class="modal-share-icons">
+            <ul>
+                <li class="email-share social-share">
+                    <span><i class="fa fa-envelope-open"></i></span>
+                </li>
+                <li class="fb-share social-share">
+                    <!-- <a class="cursor-like" (click)="shareSocial('f')"><i class="fa fa-facebook"></i></a> -->
+                    <button shareButton="facebook" [sbUrl]="'http://beta.desktopnexus.com'" [sbTitle]="image.title" [sbDescription]="image.description" [sbImage]="s3Url+image.s3_id" [sbShowCount]="true" (sbCount)="sumCounts($event)"><i class="fa fa-facebook"></i>
+                    </button>
+                </li>
+                <li class="tw-share social-share">
+                    <!-- <a class="cursor-like" (click)="shareSocial('t')"><i class="fa fa-twitter"></i></a> -->
+                    <button shareButton="twitter" [sbUrl]="'http://beta.desktopnexus.com'" [sbTitle]="image.title" [sbTags]="temptags" [sbShowCount]="true" (sbCount)="sumCounts($event)"><i class="fa fa-twitter"></i>
+                    </button>
+                </li>
+                <li class="pin-share social-share">
+                    <!-- <a class="cursor-like" (click)="shareSocial('p')"><i class="fa fa-pinterest-p"></i></a> -->
+                    <button shareButton="pinterest" [sbUrl]="'http://beta.desktopnexus.com'" [sbDescription]="image.description" [sbImage]="s3Url+image.s3_id" [sbShowCount]="true" (sbCount)="sumCounts($event)"><i class="fa fa-pinterest-p"></i>
+                    </button>
+                </li>
+                <li class="stumb-share social-share">
+                    <!-- <a class="cursor-like" (click)="shareSocial('s')"><i class="fa fa-stumbleupon"></i></a> -->
+                    <button shareButton="stumbleupon" [sbUrl]="'http://beta.desktopnexus.com'" [sbShowCount]="true" (sbCount)="sumCounts($event)"><i class="fa fa-stumbleupon"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="modal-body">
+     <div class="share-form">
+        <p class="lead">Invite your friends via email</p>
+        <form #fi="ngForm" (ngSubmit)="onSocialInvite(fi)">
+            <div class="form-group">
+                <label class="control-label">Your Full Name</label>
+                <input type="text" name="fullname" ngModel #fullname="ngModel" class="form-control" placeholder="Your Name" required>
+                <small [hidden]="fullname.valid || (fullname.pristine && !fi.submitted)" class="text-danger">
+                    Full Name is required
+                </small>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Your Friend's Email Address</label>
+                <textarea class="form-control" name="content" ngModel #content="ngModel" rows="5" placeholder="Email addresses seperated by a comma..." required></textarea>
+                <small [hidden]="content.valid || (content.pristine && !fi.submitted)" class="text-danger">
+                    Please Fill Out.
+                </small>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-lg btn-success social-share-btn" type="submit" [disabled]="!fi.valid">Share with Friends</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<!-- // Share DesktopNexus -->
+<!-- Add to Favourite -->
+<div id="tree-popover-content" class="hide">
+    <div class="tr-pop">
+        <button type="button" class="close cancel-fav"><span aria-hidden="true">×</span></button>
+        <div class="fav-box">
+            <div class="alert alert-success alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                This image has been saved to your Favorites!
+            </div>
+            <div class="favtree" id="jstree">
+
+            </div>
+            <div class="context-msg">
+                Right click on items to get options
+            </div>
+            <div class="fav-footer">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a class="btn btn-danger add-folder remove-fav">Remove from Favorites</a>
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <button class="btn btn-success myfav2 save_fav" type="button" > Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Favourite Delete Confirm -->
+<div id="ConfirmDelete">
+    <div class="conf-box text-center">
+        <div class="icon-holder"><i class="fa fa-exclamation-triangle"></i></div>
+        <div id="conf_txt"></div>
+        <p class="genrl-msg">All wallpapers in this folder will be moved up to the parent folder.</p>
+        <div class="conf-btns">
+            <button type="button" class="btn btn-primary del-item">Yes</button>
+            <button type="button" class="btn btn-primary cancel-del-tree">No</button>
+        </div>
+    </div>
+</div>
+
+<!-- Tip Box -->
+<div class="modal fade tip-modal" id="TipBox" tabindex="-1" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <span class="tip-icon"></span>
+        <h4 class="modal-title">Share Your Appreciation!</h4>
+        <p>Send some diamonds as a gift of gratitude!</p>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="tip-member-block text-center">
+              <div class="member-header">Receiving Member</div>
+              <div class="member-banner imageFit">
+                <img src="{{s3Url_wallpaper}}{{uploader.cover_img}}" alt="">
+              </div>
+              <div class="member-footer">
+                <div class="member-thumb imageFit">
+                  <a routerLink="/profile/{{uploader.username}}"><img src="{{s3Url_wallpaper}}{{uploader.avatar}}" alt=""></a>
+                </div>
+                <h4 class="member-name"><a routerLink="/profile/{{uploader.username}}">{{uploader.firstname}} {{uploader.lastname}}</a></h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="tip-amt-block text-center">
+              <div class="tip-amt-header">
+                <div class="tip-banner imageFit">
+                  <img src="assets/images/tip-banner.jpg" alt="">
+                </div>
+                <div class="tip-diamond"></div>
+                <h4 class="tip-amt-txt">GIFT AMOUNT</h4>
+              </div>
+              <div class="tip-amt-footer clearfix">
+                <div class="tip-input-radio">
+                  <label>
+                    <input type="radio" name="tipamount" value="1">
+                    <span>1</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="tipamount" value="5" checked>
+                    <span>5</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="tipamount" value="10">
+                    <span>10</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="tipamount" value="25">
+                    <span>25</span>
+                  </label>
+                </div>
+                <div class="tip-input-text">
+                  <input type="text" placeholder="Other" class="tipamount-other">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="row">
+          <div class="col-sm-9">
+            <div class="diamond-counter">
+              Your Diamonds: <i class="fa fa-diamond"></i> <strong>{{user.diamond}}</strong>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-3 col-tip-send">
+            <button type="button" class="btn btn-success btn-lg btn-block" [disabled]="user.id===uploader.id" (click)="sendDiamond(user.id,uploader.id)"><i class="fa fa-paper-plane"></i> Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- // Tip Box -->
+
+<!-- Share Comment Box -->
+<div class="modal fade tip-modal" id="ShareBox" tabindex="-1" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">URL: <input type="text" class="cmtLink" value="" /></h4>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- // Tip Box -->
+
+<!-- User Message Box -->
+<div class="modal fade msg-box" id="UserMessageBox" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="chat-area conv-activity" style="display:block">
+            <div class="flexbox-parent">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="header-thumb-area">
+                        <div class="user-row">
+                          <div class="user-thumb imageFit">
+                              <img src="assets/images/user-05.jpg" alt="">
+                          </div>
+                          <div class="user-name">NorthHero98</div>
+                      </div>
+                  </div>
+                  <div class="user-action">
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Report"><i class="fa fa-flag-o"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Block"><i class="fa fa-ban"></i></a>
+                </div>
+            </div>
+            <div class="fill-area flexbox-item-grow">
+                <div class="fill-area-content">
+                    <div class="flexbox-scroll">
+                        <div class="chat-window">
+                          <div class="inner-chat">
+                              <div class="chat-row send">
+                                  <div class="chat-body">
+                                      <div class="chat-txt">
+                                          <p>Beautiful photo aliquam eu augue pharetra, lacinia arcu ut, porta neque elementum lorem eros, ac pretium ex vestibulum.</p>
+                                      </div>
+                                      <div class="chat-thumb imageFit">
+                                          <a hrrf="#"><img src="assets/images/user-05.jpg" alt=""></a>
+                                      </div>
+                                  </div>
+                                  <div class="chat-footer">
+                                      20h
+                                  </div>
+                              </div>
+                              <div class="chat-row received">
+                                  <div class="chat-body">
+                                   <div class="chat-thumb imageFit">
+                                      <a hrrf="#"><img src="assets/images/user-03.jpg" alt=""></a>
+                                  </div>
+                                  <div class="chat-txt">
+                                      <p>Beautiful photo aliquam eu augue pharetra...</p>
+                                  </div>
+                              </div>
+                              <div class="chat-footer">
+                                  20h
+                              </div>
+                          </div>
+                          <div class="chat-row send">
+                              <div class="chat-body">
+                                  <div class="chat-txt">
+                                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin libero enim, luctus ac ante at, porta egestas sem. Curabitur laoreet ut sem at rhoncus. Duis ac malesuada mauris. Praesent quam nunc, tempus in mauris at, posuere lacinia neque.</p>
+                                  </div>
+                                  <div class="chat-thumb imageFit">
+                                      <a href="#"><img src="assets/images/user-05.jpg" alt=""></a>
+                                  </div>
+                              </div>
+                              <div class="chat-footer">
+                                  20h
+                              </div>
+                          </div>
+                          <div class="chat-row received">
+                              <div class="chat-body">
+                               <div class="chat-thumb imageFit">
+                                  <a hrrf="#"><img src="assets/images/user-03.jpg" alt=""></a>
+                              </div>
+                              <div class="chat-txt">
+                                  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla id diam id odio dictum efficitur. Cras ac eros massa. Duis purus libero, dapibus vitae sollicitudin quis, pellentesque id lacus. Quisque tempus tellus vitae elit efficitur elementum. Quisque lacinia mattis ante ut volutpat. Donec dignissim nisl eros, non consequat odio rutrum lobortis. Integer vitae pretium quam.</p>
+                              </div>
+                          </div>
+                          <div class="chat-footer">
+                              20h
+                          </div>
+                      </div>
+                      <div class="chat-row send">
+                          <div class="chat-body">
+                              <div class="chat-txt">
+                                  <p>Nunc auctor imperdiet urna, eget ullamcorper elit ultricies finibus.</p>
+                              </div>
+                              <div class="chat-thumb imageFit">
+                                  <a href="#"><img src="assets/images/user-05.jpg" alt=""></a>
+                              </div>
+                          </div>
+                          <div class="chat-footer">
+                              20h
+                          </div>
+                      </div>
+                      <div class="chat-row received">
+                          <div class="chat-body">
+                           <div class="chat-thumb imageFit">
+                              <a hrrf="#"><img src="assets/images/user-03.jpg" alt=""></a>
+                          </div>
+                          <div class="chat-txt">
+                              <p>Vestibulum arcu libero, convallis nec purus nec, posuere laoreet justo. Phasellus ac nulla pellentesque, commodo dui id, aliquam erat. Ut fermentum luctus ipsum sit amet vehicula.</p>
+                          </div>
+                      </div>
+                      <div class="chat-footer">
+                          20h
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="flexbox-footer">
+    <div class="msg-go-next text-right">
+        <div class="row">
+            <div class="col-xs-12">
+                <textarea class="form-control user-chat-txtarea"></textarea>
+                <span class="attach-icons">
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Attach Diamonds"><i class="fa fa-diamond"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Attach a Sticker"><i class="fa fa-sun-o" aria-hidden="true"></i></a>
+                </span>
+                <button type="button" class="btn btn-primary">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!--/.chat-area-->
+</div>
+</div>
+</div>
+<!-- // User Message Box -->

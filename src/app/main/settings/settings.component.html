@@ -1,0 +1,98 @@
+<div class="main-container">
+  <div class="setting-wrapper">
+    <div class="settings-header">
+        <div class="settings-banner imageFit banner_img">
+            <img src="{{s3Url}}{{user.cover_img}}" alt="">
+        </div>
+        <div class="change-banner-btn" (click)="uploadBanner()"><span>Cover Photo </span> <i class="fa fa-camera"></i></div>
+        <div class="admin-thumb imageFit cus_img">
+          <img src="{{s3Url}}{{user.avatar}}" alt="">
+          <span class="change-thumb-btn" (click)="uploadAvatar()"><i class="fa fa-camera"></i> Avatar</span>
+        </div>
+        <h3 class="adn">{{user.firstname}} {{user.lastname}}</h3>
+    </div>
+		  <div class="container">
+    	<div class="page-wrapper clearfix">
+            <div class="left-sidebar">
+                <div class="setting-nav">
+                    <h6>My Account</h6>
+                    <ul>
+                        <li><a routerLink="/settings"><i class="fa fa-cog"></i> General Settings</a></li>
+                        <li><a routerLink="/settings/info"><i class="fa fa-wrench"></i> My Information</a></li>                        
+                        <li><a routerLink="/settings/change"><i class="fa fa-key"></i> Change Password</a></li>
+                        <li><a routerLink="/settings/social"><i class="fa fa-share-alt"></i> Social Accounts</a></li>
+                        <li><a routerLink="/settings/email"><i class="fa fa-envelope"></i> Email Notifications</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--/.left-sidebar-->
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+  </div>
+  <!-- /.setting-wrapper -->
+</div>
+<!--/.main-container-->
+
+
+<!-- Avatar upload -->
+<div class="modal fade uploadpic-modal" id="A_UploadPic" tabindex="-1" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Upload Avatar</h4>
+      </div>
+      <div class="modal-body">
+        <!-- Change /upload-target to your upload address -->
+        <form action="fileUpload($event)" id="A_uploadZone" class="dropzone">
+            <div class="dz-message" data-dz-message>
+                <div class="drop-icon-holder"></div>
+                <h3>Drag &amp; Drop</h3>
+                <p>Your image here</p>
+                <div class="divider-or"><span>or</span></div>
+                <button type="button" class="btn btn-primary fileinput-button"><i class="fa fa-cloud-upload" style="margin-right:5px"></i> Select a photo from your computer</button>
+                <div class="divider-or"><span>or</span></div>
+                <input type="text" class="form-control" placeholder="Paste Image URL">
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+          <div class="drop-msg text-center">By Uploading a picture, you agree to DN's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></div>
+          <!-- change Avatar on click event -->
+          <!-- <button class="btn btn-primary" (click)="onAvatar()">Save</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Banner upload -->
+<div class="modal fade uploadpic-modal" id="B_UploadPic" tabindex="-1" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Upload Avatar</h4>
+      </div>
+      <div class="modal-body">
+        <!-- Change /upload-target to your upload address -->
+        <form action="fileUpload($event)" id="B_uploadZone" class="dropzone">
+            <div class="dz-message" data-dz-message>
+                <div class="drop-icon-holder"></div>
+                <h3>Drag &amp; Drop</h3>
+                <p>Your image here</p>
+                <div class="divider-or"><span>or</span></div>
+                <button type="button" class="btn btn-primary fileinput-button"><i class="fa fa-cloud-upload" style="margin-right:5px"></i> Select a photo from your computer</button>
+                <div class="divider-or"><span>or</span></div>
+                <input type="text" class="form-control" placeholder="Paste Image URL">
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+          <div class="drop-msg text-center">By Uploading a picture, you agree to DN's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></div>
+          <!-- change Banner on click event -->
+          <!-- <button class="btn btn-primary" (click)="onBanner()">Save</button> -->
+      </div>
+    </div>
+  </div>
+</div>

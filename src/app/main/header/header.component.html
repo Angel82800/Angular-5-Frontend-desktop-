@@ -1,0 +1,807 @@
+<ng-container *ngIf="user!=null">
+    <header class="site-header">
+        <div class="header-top">
+            <div class="container">
+                <div class="site-info">
+                    <ul class="clearfix">
+                        <li class="fixed-logo"><a href="#"><img src="assets/images/dn-line-logo-light.png" alt=""></a></li>
+                        <li><i class="fa fa-user"></i> <strong>1,034,461</strong> Members Online</li>
+                        <li><i class="fa fa-picture-o"></i> <strong>{{image}}</strong> Wallpapers</li>
+                    </ul>
+                </div>
+                <div class="nav-icons">
+                    <ul class="clearfix">
+                        <li><a href="#"><i class="fa fa-sun-o"></i></a></li>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        <li class="dropdown exp-drop static-drop">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-signal"></i><span class="exp-noti"></span></a>
+                            <div class="dropdown-menu">
+                                <div class="drop-inner">
+                                    <h4 class="drop-title">Gain Experience by Exploring DN!</h4>
+                                    <div class="exp-bottom clearfix">
+                                        <div class="mascot-walking">
+                                            <div id="walk-container">
+                                              <!-- <div id="walk"></div> -->
+                                              <div id="dance"></div>
+                                            </div>
+                                        </div>
+                                        <div class="level-box">
+                                            <div class="progress">
+                                              <div class="progress-bar progress-bar-striped active user-active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%"></div>
+                                            </div>
+                                            <div class="progress-info clearfix">
+                                                <span class="pull-left lvl-txt">Level {{user.level}}</span>
+                                                <span class="pull-right lvl-rt"><span>+ 127 Exp.</span> until level {{user.level+1}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="idle-msg">
+                                        <strong><i class="fa fa-exclamation"></i> Idle:</strong> You only gain exp while actively exploring DN
+                                    </div>
+                                    <div class="exp-confirm-btn">
+                                        <button type="button" class="btn-glowing" data-toggle="modal" data-target="#RewardsModal">Ascend to Level {{user.level+1}} <i></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a href="#" data-toggle="modal" data-target="#BuySticker"><i class="fa fa-diamond"></i> <span class="noti-blue">{{user.diamond}}</span></a></li>
+                        <li class="dropdown noti-drop">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <span class="noti-red">1072</span></a>
+                            <div class="dropdown-menu">
+                                <div class="noti-heading">Notifications</div>
+                                <a href="#" class="mark-read fcb">Mark All As Read</a>
+                                <div class="noti-messages">
+                                    <ul>
+                                        <li class="type-user">
+                                            <a href="#">
+                                                <div class="noti-content clearfix">
+                                                    <div class="noti-thumb">
+                                                        <img src="assets/images/user-02.jpg" alt="">
+                                                    </div>
+                                                    <div class="noti-header"><span class="fcb">Jessica Flower</span> is now following you</div>
+                                                    <div class="noti-time">20 minutes ago</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="type-chat">
+                                            <a href="#">
+                                                <div class="noti-content clearfix">
+                                                    <div class="noti-thumb">
+                                                        <img src="assets/images/wallpaper-14.jpg" alt="">
+                                                    </div>
+                                                    <div class="noti-header"><span class="fcb">Matt Demon</span> left a comment on your <span class="fcb">Baby</span> wallpaper</div>
+                                                    <div class="noti-time">20 minutes ago</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="type-users">
+                                            <a href="#">
+                                                <div class="noti-content clearfix">
+                                                    <div class="noti-thumb">
+                                                        <img src="assets/images/christmas-wallpaper.jpg" alt="">
+                                                    </div>
+                                                    <div class="noti-header"><span class="fcb">Peter Parker</span> following on your <span class="fcb">Digital Art/Abstract</span> group</div>
+                                                    <div class="noti-time">20 minutes ago</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="type-reply">
+                                            <a href="#">
+                                                <div class="noti-content clearfix">
+                                                    <div class="noti-thumb">
+                                                        <img src="assets/images/profile-thumb.jpg" alt="">
+                                                    </div>
+                                                    <div class="noti-header"><span class="fcb">Julia Anderson</span> reply on your comment</div>
+                                                    <div class="noti-time">20 minutes ago</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="type-fav">
+                                            <a href="#">
+                                                <div class="noti-content clearfix">
+                                                    <div class="noti-thumb">
+                                                        <img src="assets/images/wallpaper-07.jpg" alt="">
+                                                    </div>
+                                                    <div class="noti-header"><span class="fcb">Ariana Diamond</span> fovourite on your <span class="fcb">Baby</span> wallpaper</div>
+                                                    <div class="noti-time">20 minutes ago</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="noti-footer">
+                                    <a href="notification.html" class="view-all">View All Notifications</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a href="#" data-toggle="modal" data-target="#MessageBox"><i class="fa fa-envelope"></i> <span class="noti-red">16</span></a></li>
+                        <li class="dropdown setting-drop">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
+                          <ul class="dropdown-menu setting-drop">
+                            <li><a routerLink="/settings">Settings</a></li>
+                            <li><a routerLink="/index">Logout</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--/.header-top-->
+        
+        <div class="header-bottom">
+            <nav class="navbar">
+              <div class="container">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="/#/"><img src="assets/images/desktop-nexus-logo.png" alt=""></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                  <div class="navbar-form navbar-right">
+                    <div class="search-form">
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Search...">
+                          <div class="input-group-btn">
+                            <div class="select-box">
+                                <select [(ngModel)]="name" name="Select name" class="form-control">
+                                  <option *ngFor="let n of names" [attr.value]="n">{{n}}</option>
+                                </select>
+                            </div>
+                          </div>
+                          <span class="input-group-btn">
+                            <button class="btn" type="button" (click)="clicked(name)"><i class="fa fa-search fa-fw"></i></button>
+                          </span>
+                        </div>
+                      </div>
+                  </div>
+                  <!--/.navbar-form-->
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Explore <i class="fa fa-angle-down"></i></a>
+                      <div class="dropdown-menu">
+                        <div class="inner-dropdown clearfix">
+                            <div class="nav-block">
+                                <h5 class="nav-heading">Recent</h5>
+                                <ul class="recent-menu">
+                                    <li *ngFor="let group of groups; let i = index"><a routerLink="/group/{{group.name}}" *ngIf="i == 0">{{group.name}}</a></li>
+                                    <li *ngFor="let group of groups; let i = index"><a routerLink="/group/{{group.name}}" *ngIf="i == 1">{{group.name}}</a></li>
+                                    <li *ngFor="let group of groups; let i = index"><a routerLink="/group/{{group.name}}" *ngIf="i == 2">{{group.name}}</a></li>
+                                    <li *ngFor="let group of groups; let i = index"><a routerLink="/group/{{group.name}}" *ngIf="i == 3">{{group.name}}</a></li>
+                                </ul>
+                            </div>
+                            <div class="nav-block">
+                                <h5 class="nav-heading">Popular</h5>
+                                <ul class="icon-menu">
+                                    <li><a href="#" class="icon-car"><span class="dn-car-lg"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="nav-block">
+                                <h5 class="nav-heading">Favorite</h5>
+                                <ul class="icon-menu">
+                                    <li><a href="#" class="icon-fav"><span class="dn-favourite"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="nav-block">
+                                <h5 class="nav-heading">Galleries</h5>
+                                <div class="general-menu clearfix">
+                                    <ul class="menu-col">
+                                        <li *ngFor="let gallery of galleries; let i = index"><a routerLink="/gallery/{{gallery.name}}" *ngIf="i == 0"><span class="dn-abstract"></span> {{gallery.name}}</a></li>
+                                        <li *ngFor="let gallery of galleries; let i = index"><a routerLink="/gallery/{{gallery.name}}" *ngIf="i == 1"><span class="dn-airplane"></span> {{gallery.name}}</a></li>
+                                        <li *ngFor="let gallery of galleries; let i = index"><a routerLink="/gallery/{{gallery.name}}" *ngIf="i == 2"><span class="dn-animal"></span> {{gallery.name}}</a></li>
+                                        <li *ngFor="let gallery of galleries; let i = index"><a routerLink="/gallery/{{gallery.name}}" *ngIf="i == 3"><span class="dn-anime"></span> {{gallery.name}}</a></li>
+                                    </ul>
+                                    <ul class="menu-col">
+                                        <li *ngFor="let gallery of galleries; let i = index"><a routerLink="/gallery/{{gallery.name}}" *ngIf="i == 4"><span class="dn-abstract"></span> {{gallery.name}}</a></li>
+                                        <li *ngFor="let gallery of galleries; let i = index"><a routerLink="/gallery/{{gallery.name}}" *ngIf="i == 5"><span class="dn-abstract"></span> {{gallery.name}}</a></li>
+                                        <li *ngFor="let gallery of galleries; let i = index"><a routerLink="/gallery/{{gallery.name}}" *ngIf="i == 6"><span class="dn-car"></span> {{gallery.name}}</a></li>
+                                        <li *ngFor="let gallery of galleries; let i = index"><a routerLink="/gallery/{{gallery.name}}" *ngIf="i == 7"><span class="dn-abstract"></span> {{gallery.name}}</a></li>
+                                    </ul>
+                                    <ul class="menu-col">
+                                        <li *ngFor="let gallery of galleries; let i = index"><a routerLink="/gallery/{{gallery.name}}" *ngIf="i == 8"><span class="dn-abstract"></span> {{gallery.name}}</a></li>
+                                        <li *ngFor="let gallery of galleries; let i = index"><a routerLink="/gallery/{{gallery.name}}" *ngIf="i == 9"><span class="dn-abstract"></span> {{gallery.name}}</a></li>
+                                        <li *ngFor="let gallery of galleries; let i = index"><a routerLink="/gallery/{{gallery.name}}" *ngIf="i == 10"><span class="dn-abstract"></span> {{gallery.name}}</a></li>
+                                        <li><a routerLink="/gallery" class="view-more">View More <span class="bullet"></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="dropdown">
+                      <a routerLink="/profile/{{user.username}}" class="dropdown-toggle" data-toggle="dropdown">My DN <i class="fa fa-angle-down"></i></a>
+                      <div class="dropdown-menu">
+                        <div class="mydn-wrap">
+                            <div class="md-top">
+                                <div class="md-stat clearfix">
+                                    <div class="md-user-box">
+                                        <div class="box-inner">
+                                            <div class="md-thumb">
+                                                <a routerLink="/profile/{{user.username}}">
+                                                    <img src="{{s3Url}}{{user.avatar}}" alt="">
+                                                </a>
+                                                <span class="change-thumb-btn" (click)="uploadAWallpaper()"><i class="fa fa-camera"></i> Avatar</span>
+                                            </div>
+                                            <h3 class="md-name">
+                                                <a routerLink="/profile/{{user.username}}">{{user.firstname}} {{user.lastname}}</a>
+                                            </h3>
+                                            <div class="level-badge">
+                                                <span>Level</span>
+                                                <strong>{{user.level}}</strong>
+                                            </div>
+                                            <div class="level-box">
+                                                <div class="progress">
+                                                  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{user.exp}}%"></div>
+                                                </div>
+                                                <div class="progress-info clearfix">
+                                                    <span class="pull-left">{{user.exp}}%</span>
+                                                    <span class="pull-right">+ 139,481 xp until level {{user.level+1}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="stat-box diamond">
+                                        <div class="box-inner text-center">
+                                            <strong class="count">{{user.diamond}}</strong>
+                                            <p>Diamonds</p>
+                                        </div>
+                                    </div>
+                                    <div class="stat-box achievement">
+                                        <div class="box-inner text-center">
+                                            <strong class="count">5</strong>
+                                            <p>Achievement</p>
+                                        </div>
+                                    </div>
+                                    <div class="stat-box stickers">
+                                        <div class="box-inner text-center">
+                                            <strong class="count">24</strong>
+                                            <p>Stickers</p>
+                                        </div>
+                                    </div>
+                                    <div class="stat-box uploads">
+                                        <div class="box-inner text-center">
+                                            <strong class="count">{{user.uploads}}</strong>
+                                            <p>Uploads</p>
+                                        </div>
+                                    </div>
+                                    <div class="stat-box favourites">
+                                        <div class="box-inner text-center">
+                                            <strong class="count">{{user.favourites}}</strong>
+                                            <p>Favorites</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="md-bottom clearfix">
+                                <div class="treasure-box">
+                                    <div class="tr-thumb"></div>
+                                    <div class="tr-title">Treasure Chest</div>
+                                </div>
+                                <div class="rewards-col">
+                                    <div class="box-heading"><span>Daily <br>Rewards</span></div>
+                                    <ul class="daily-progress clearfix">
+                                        <li>
+                                            <div class="prog-top">
+                                                <p><strong>Upload</strong></p>
+                                                <p class="count">5</p>
+                                                <p>Wallpapers</p>
+                                            </div>
+                                            <div class="progress">
+                                              <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%" data-toggle="tooltip" title="40%"></div>
+                                            </div>
+                                            <p class="achiv">---</p>
+                                        </li>
+                                        <li>
+                                            <div class="prog-top">
+                                                <p><strong>Favorite</strong></p>
+                                                <p class="count">5</p>
+                                                <p>Wallpapers</p>
+                                            </div>
+                                            <div class="progress">
+                                              <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%" data-toggle="tooltip" title="100%"></div>
+                                            </div>
+                                            <p class="achiv">+10 Coins</p>
+                                        </li>
+                                        <li>
+                                            <div class="prog-top">
+                                                <p><strong>Write</strong></p>
+                                                <p class="count">10</p>
+                                                <p>Comments</p>
+                                            </div>
+                                            <div class="progress">
+                                              <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%" data-toggle="tooltip" title="10%"></div>
+                                            </div>
+                                            <p class="achiv">---</p>
+                                        </li>
+                                        <li>
+                                            <div class="prog-top">
+                                                <p><strong>Post on</strong></p>
+                                                <p class="count">10</p>
+                                                <p>Profiles</p>
+                                            </div>
+                                            <div class="progress">
+                                              <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:20%" data-toggle="tooltip" title="20%"></div>
+                                            </div>
+                                            <p class="achiv">---</p>
+                                        </li>
+                                    </ul>
+                                    <div class="share-frnd">
+                                        <p>Refer a Friend</p>
+                                        <p><span class="count">12</span> +120 Pts</p>
+                                        <div class="url-box">
+                                            <p>Personal URL:</p>
+                                            <input type="text" class="form-control" value="http://desktopnexus.com/profile/{{user.username}}/">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li><a (click)="uploadWallpaper()">Upload</a></li>
+                    <li class="mob-search-trigger"><a href="#"><i class="fa fa-search"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+        </div>
+        <!--/.header-bottom-->
+    </header>
+    <!-- Upload Pic -->
+    <div class="modal fade uploadpic-modal" id="W_UploadPic" tabindex="-1" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Upload Wallpaper</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- Change /upload-target to your upload address -->
+                    <form action="fileUpload($event)" id="W_uploadZone" class="dropzone">
+                        <div class="dz-message" data-dz-message>
+                            <div class="drop-icon-holder"></div>
+                            <h3>Drag &amp; Drop</h3>
+                            <p>Your image here</p>
+                            <div class="divider-or"><span>or</span></div>
+                            <button type="button" class="btn btn-primary fileinput-button wallpaper"><i class="fa fa-cloud-upload" style="margin-right:5px"></i> Select a photo from your computer</button>
+                            <div class="divider-or"><span>or</span></div>
+                            <input type="text" class="form-control" placeholder="Paste Image URL">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                  <div class="drop-msg text-center">By Uploading a picture, you agree to DN's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- // Upload Pic -->
+    <!-- Avatar upload -->
+    <div class="modal fade uploadpic-modal" id="AW_UploadPic" tabindex="-1" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Upload Avatar</h4>
+          </div>
+          <div class="modal-body">
+            <!-- Change /upload-target to your upload address -->
+            <form action="fileUpload($event)" id="AW_uploadZone" class="dropzone">
+                <div class="dz-message" data-dz-message>
+                    <div class="drop-icon-holder"></div>
+                    <h3>Drag &amp; Drop</h3>
+                    <p>Your image here</p>
+                    <div class="divider-or"><span>or</span></div>
+                    <button type="button" class="btn btn-primary fileinput-button"><i class="fa fa-cloud-upload" style="margin-right:5px"></i> Select a photo from your computer</button>
+                    <div class="divider-or"><span>or</span></div>
+                    <input type="text" class="form-control" placeholder="Paste Image URL">
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+              <div class="drop-msg text-center">By Uploading a picture, you agree to DN's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></div>
+              <!-- change Avatar on click event -->
+              <!-- <button class="btn btn-primary" (click)="onAvatar()">Save</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- Message Box -->
+    <div class="modal fade msg-box" id="MessageBox" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="msg-inbox conv-activity" style="display:block">
+                <div class="flexbox-parent">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Private Messages</h4>
+                        <button type="button" class="btn btn-primary btn-conv"><i class="fa fa-pencil"></i> New Message</button>
+                    </div>
+                    <div class="fill-area flexbox-item-grow">
+                        <div class="fill-area-content">
+                            <div class="flexbox-scroll">
+                                <div class="msg-conversations">
+                                  <ul>
+                                      <li>
+                                          <div class="conv-item unread clearfix">
+                                              <div class="conv-thumb imageFit">
+                                                  <a href="#"><img src="assets/images/user-05.jpg" alt=""></a>
+                                              </div>
+                                              <div class="msg-header clearfix">
+                                                <div class="msg-author-info">
+                                                    <span class="msg-name">Stupid Monkey</span>
+                                                </div>
+                                                <div class="msg-meta">
+                                                    <span class="msg-time"><i class="fa fa-clock-o"></i> 12 hours ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="conv-snippet">
+                                                <p>Beautiful photo aliquam eu augue pharetra, lacinia arcu ut, porta neque elementum lorem eros, ac pretium ex vestibulum. Lacinia arcu ut, porta neque elementum lorem eros...</p>
+                                            </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="conv-item clearfix">
+                                              <div class="conv-thumb imageFit">
+                                                  <a href="#"><img src="assets/images/user-01.jpg" alt=""></a>
+                                              </div>
+                                              <div class="msg-header clearfix">
+                                                <div class="msg-author-info">
+                                                    <span class="msg-name">North Hero</span>
+                                                </div>
+                                                <div class="msg-meta">
+                                                    <span class="msg-time"><i class="fa fa-clock-o"></i> 12 hours ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="conv-snippet">
+                                                <p>Beautiful photo aliquam eu augue pharetra, lacinia arcu ut, porta neque elementum lorem eros...</p>
+                                            </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="conv-item unread clearfix">
+                                              <div class="conv-thumb imageFit">
+                                                  <a href="#"><img src="assets/images/user-02.jpg" alt=""></a>
+                                              </div>
+                                              <div class="msg-header clearfix">
+                                                <div class="msg-author-info">
+                                                    <span class="msg-name">Robert Lee</span>
+                                                </div>
+                                                <div class="msg-meta">
+                                                    <span class="msg-time"><i class="fa fa-clock-o"></i> 12 hours ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="conv-snippet">
+                                                <p>Beautiful photo aliquam eu augue pharetra...</p>
+                                            </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="conv-item clearfix">
+                                              <div class="conv-thumb imageFit">
+                                                  <a href="#"><img src="assets/images/user-03.jpg" alt=""></a>
+                                              </div>
+                                              <div class="msg-header clearfix">
+                                                <div class="msg-author-info">
+                                                    <span class="msg-name">Stupid Monkey</span>
+                                                </div>
+                                                <div class="msg-meta">
+                                                    <span class="msg-time"><i class="fa fa-clock-o"></i> 12 hours ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="conv-snippet">
+                                                <p>Beautiful photo aliquam eu augue pharetra, lacinia arcu ut, porta neque elementum lorem eros, ac pretium ex vestibulum. Lacinia arcu ut...</p>
+                                            </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="conv-item clearfix">
+                                              <div class="conv-thumb imageFit">
+                                                  <a href="#"><img src="assets/images/user-05.jpg" alt=""></a>
+                                              </div>
+                                              <div class="msg-header clearfix">
+                                                <div class="msg-author-info">
+                                                    <span class="msg-name">Stupid Monkey</span>
+                                                </div>
+                                                <div class="msg-meta">
+                                                    <span class="msg-time"><i class="fa fa-clock-o"></i> 12 hours ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="conv-snippet">
+                                                <p>Beautiful photo aliquam eu augue pharetra, lacinia arcu ut, porta neque elementum lorem eros, ac pretium ex vestibulum. Lacinia arcu ut, porta neque elementum lorem eros...</p>
+                                            </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="conv-item unread clearfix">
+                                              <div class="conv-thumb imageFit">
+                                                  <a href="#"><img src="assets/images/user-01.jpg" alt=""></a>
+                                              </div>
+                                              <div class="msg-header clearfix">
+                                                <div class="msg-author-info">
+                                                    <span class="msg-name">Stupid Monkey</span>
+                                                </div>
+                                                <div class="msg-meta">
+                                                    <span class="msg-time"><i class="fa fa-clock-o"></i> 12 hours ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="conv-snippet">
+                                                <p>Beautiful photo aliquam eu augue pharetra, lacinia arcu ut, porta neque elementum lorem eros...</p>
+                                            </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="conv-item unread clearfix">
+                                              <div class="conv-thumb imageFit">
+                                                  <a href="#"><img src="assets/images/user-02.jpg" alt=""></a>
+                                              </div>
+                                              <div class="msg-header clearfix">
+                                                <div class="msg-author-info">
+                                                    <span class="msg-name">Stupid Monkey</span>
+                                                </div>
+                                                <div class="msg-meta">
+                                                    <span class="msg-time"><i class="fa fa-clock-o"></i> 12 hours ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="conv-snippet">
+                                                <p>Beautiful photo aliquam eu augue pharetra...</p>
+                                            </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="conv-item clearfix">
+                                              <div class="conv-thumb imageFit">
+                                                  <a href="#"><img src="assets/images/user-03.jpg" alt=""></a>
+                                              </div>
+                                              <div class="msg-header clearfix">
+                                                <div class="msg-author-info">
+                                                    <span class="msg-name">Stupid Monkey</span>
+                                                </div>
+                                                <div class="msg-meta">
+                                                    <span class="msg-time"><i class="fa fa-clock-o"></i> 12 hours ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="conv-snippet">
+                                                <p>Beautiful photo aliquam eu augue pharetra, lacinia arcu ut, porta neque elementum lorem eros, ac pretium ex vestibulum. Lacinia arcu ut...</p>
+                                            </div>
+                                          </div>
+                                      </li>
+                                  </ul>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/.msg-inbox-->
+            <div class="msg-write conv-activity" style="display:none">
+                <div class="flexbox-parent">
+                    <div class="modal-header">
+                        <a href="#" class="conv-back"><i class="fa fa-chevron-left"></i></a>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-center">New Message</h4>
+                    </div>
+                    <div class="fill-area flexbox-item-grow user-list-box">
+                       <div class="fill-area-content">
+                           <label class="control-label">Send message to:</label>
+                           <div class="form-group find-user-drop">
+                            <input type="text" class="form-control">
+                           </div>
+                           <label class="control-label">Recent</label>
+                       </div>
+                   </div>
+                   <div class="fill-area flexbox-item-grow">
+                        <div class="fill-area-content">
+                            <div class="flexbox-scroll">
+                                <div class="user-drop-list">
+                       <div class="list-block">
+                           <ul>
+                              <li>
+                                  <div class="user-row">
+                                      <div class="user-thumb imageFit">
+                                          <img src="assets/images/user-01.jpg" alt="">
+                                      </div>
+                                      <div class="user-name">Stupid Monkey</div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <div class="user-row">
+                                      <div class="user-thumb imageFit">
+                                          <img src="assets/images/user-02.jpg" alt="">
+                                      </div>
+                                      <div class="user-name">Stupid Monkey</div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <div class="user-row">
+                                      <div class="user-thumb imageFit">
+                                          <img src="assets/images/user-03.jpg" alt="">
+                                      </div>
+                                      <div class="user-name">Stupid Monkey</div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <div class="user-row">
+                                      <div class="user-thumb imageFit">
+                                          <img src="assets/images/user-04.jpg" alt="">
+                                      </div>
+                                      <div class="user-name">Stupid Monkey</div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <div class="user-row">
+                                      <div class="user-thumb imageFit">
+                                          <img src="assets/images/user-05.jpg" alt="">
+                                      </div>
+                                      <div class="user-name">Stupid Monkey</div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <div class="user-row">
+                                      <div class="user-thumb imageFit">
+                                          <img src="assets/images/user-01.jpg" alt="">
+                                      </div>
+                                      <div class="user-name">Stupid Monkey</div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <div class="user-row">
+                                      <div class="user-thumb imageFit">
+                                          <img src="assets/images/user-02.jpg" alt="">
+                                      </div>
+                                      <div class="user-name">Stupid Monkey</div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <div class="user-row">
+                                      <div class="user-thumb imageFit">
+                                          <img src="assets/images/user-03.jpg" alt="">
+                                      </div>
+                                      <div class="user-name">Stupid Monkey</div>
+                                  </div>
+                              </li>
+                           </ul>
+                       </div>
+                   </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flexbox-footer">
+                        <div class="msg-go-next text-right">
+                           <button type="button" class="btn btn-primary">Next</button>
+                       </div>
+                    </div>
+                </div>
+            </div>
+            <!--/.msg-write-->
+            <div class="chat-area conv-activity" style="display:none">
+                <div class="flexbox-parent">
+                    <div class="modal-header">
+                <a href="#" class="conv-back"><i class="fa fa-chevron-left"></i></a>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="header-thumb-area">
+                    <div class="user-row">
+                      <div class="user-thumb imageFit">
+                          <img src="assets/images/user-01.jpg" alt="">
+                      </div>
+                      <div class="user-name">Stupid Monkey</div>
+                  </div>
+                </div>
+                <div class="user-action">
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Report"><i class="fa fa-flag-o"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" title="Block"><i class="fa fa-ban"></i></a>
+                </div>
+              </div>
+                    <div class="fill-area flexbox-item-grow">
+                        <div class="fill-area-content">
+                            <div class="flexbox-scroll">
+                                <div class="chat-window">
+                  <div class="inner-chat">
+                      <div class="chat-row send">
+                          <div class="chat-body">
+                              <div class="chat-txt">
+                                  <p>Beautiful photo aliquam eu augue pharetra, lacinia arcu ut, porta neque elementum lorem eros, ac pretium ex vestibulum.</p>
+                              </div>
+                              <div class="chat-thumb imageFit">
+                                  <a hrrf="#"><img src="assets/images/user-01.jpg" alt=""></a>
+                              </div>
+                          </div>
+                          <div class="chat-footer">
+                              20h
+                          </div>
+                      </div>
+                      <div class="chat-row received">
+                          <div class="chat-body">
+                             <div class="chat-thumb imageFit">
+                                  <a hrrf="#"><img src="assets/images/user-03.jpg" alt=""></a>
+                              </div>
+                              <div class="chat-txt">
+                                  <p>Beautiful photo aliquam eu augue pharetra...</p>
+                              </div>
+                          </div>
+                          <div class="chat-footer">
+                              20h
+                          </div>
+                      </div>
+                      <div class="chat-row send">
+                          <div class="chat-body">
+                              <div class="chat-txt">
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin libero enim, luctus ac ante at, porta egestas sem. Curabitur laoreet ut sem at rhoncus. Duis ac malesuada mauris. Praesent quam nunc, tempus in mauris at, posuere lacinia neque.</p>
+                              </div>
+                              <div class="chat-thumb imageFit">
+                                  <a href="#"><img src="assets/images/user-01.jpg" alt=""></a>
+                              </div>
+                          </div>
+                          <div class="chat-footer">
+                              20h
+                          </div>
+                      </div>
+                      <div class="chat-row received">
+                          <div class="chat-body">
+                             <div class="chat-thumb imageFit">
+                                  <a hrrf="#"><img src="assets/images/user-03.jpg" alt=""></a>
+                              </div>
+                              <div class="chat-txt">
+                                  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla id diam id odio dictum efficitur. Cras ac eros massa. Duis purus libero, dapibus vitae sollicitudin quis, pellentesque id lacus. Quisque tempus tellus vitae elit efficitur elementum. Quisque lacinia mattis ante ut volutpat. Donec dignissim nisl eros, non consequat odio rutrum lobortis. Integer vitae pretium quam.</p>
+                              </div>
+                          </div>
+                          <div class="chat-footer">
+                              20h
+                          </div>
+                      </div>
+                      <div class="chat-row send">
+                          <div class="chat-body">
+                              <div class="chat-txt">
+                                  <p>Nunc auctor imperdiet urna, eget ullamcorper elit ultricies finibus.</p>
+                              </div>
+                              <div class="chat-thumb imageFit">
+                                  <a href="#"><img src="assets/images/user-01.jpg" alt=""></a>
+                              </div>
+                          </div>
+                          <div class="chat-footer">
+                              20h
+                          </div>
+                      </div>
+                      <div class="chat-row received">
+                          <div class="chat-body">
+                             <div class="chat-thumb imageFit">
+                                  <a hrrf="#"><img src="assets/images/user-03.jpg" alt=""></a>
+                              </div>
+                              <div class="chat-txt">
+                                  <p>Vestibulum arcu libero, convallis nec purus nec, posuere laoreet justo. Phasellus ac nulla pellentesque, commodo dui id, aliquam erat. Ut fermentum luctus ipsum sit amet vehicula.</p>
+                              </div>
+                          </div>
+                          <div class="chat-footer">
+                              20h
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flexbox-footer">
+                        <div class="msg-go-next text-right">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <textarea class="form-control chat-txtarea"></textarea>
+                                    <span class="attach-icons">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Attach Diamonds"><i class="fa fa-diamond"></i></a>
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Attach a Sticker"><i class="fa fa-sun-o" aria-hidden="true"></i></a>
+                                    </span>
+                                    <button type="button" class="btn btn-primary">Send</button>
+                                </div>
+                            </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+            <!--/.chat-area-->
+        </div>
+      </div>
+    </div>
+</ng-container>
+

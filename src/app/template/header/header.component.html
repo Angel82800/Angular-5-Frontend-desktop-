@@ -1,0 +1,356 @@
+    <header class="site-header">
+    	<div class="header-top">
+        	<div class="container">
+            	<div class="site-info">
+                	<ul class="clearfix">
+                    <li class="fixed-logo"><a href="#"><img src="assets/images/dn-line-logo-light.png" alt=""></a></li>
+                	  <li><i class="fa fa-user"></i> <strong>1,034,461</strong> Members Online</li>
+                    <li><i class="fa fa-picture-o"></i> <strong>1,461,195</strong> Wallpapers</li>
+                  </ul>
+                </div>
+                <div class="nav-icons">
+                	<ul class="clearfix">
+                    	<li class="top-login"><a href="#" data-toggle="modal" data-target="#LoginBox"><i class="fa fa-sign-in"></i> Sign In</a></li>
+                      <li class="top-reg visible-xs-inline-block"><a href="#" data-toggle="modal" data-target="#SignupBox"><i class="fa fa-pencil"></i> Join for <strong class="text-uppercase">Free</strong></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--/.header-top-->
+        
+        <div class="header-bottom">
+        	<nav class="navbar">
+              <div class="container">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#"><img src="assets/images/desktop-nexus-logo.png" alt=""></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Explore <i class="fa fa-angle-down"></i></a>
+                      <div class="dropdown-menu">
+                        <div class="inner-dropdown clearfix">
+                            <div class="nav-block">
+                                <h5 class="nav-heading">Recent</h5>
+                                <ul class="recent-menu">
+                                    <li><a href="#">Nature</a></li>
+                                    <li><a href="#">Celebs</a></li>
+                                    <li><a href="#">Brtiney Spears</a></li>
+                                    <li><a href="#">Cartoon</a></li>
+                                </ul>
+                            </div>
+                            <div class="nav-block">
+                                <h5 class="nav-heading">Popular</h5>
+                                <ul class="icon-menu">
+                                    <li><a href="#" class="icon-car"><span class="dn-car-lg"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="nav-block">
+                                <h5 class="nav-heading">Favorite</h5>
+                                <ul class="icon-menu">
+                                    <li><a href="#" class="icon-fav"><span class="dn-favourite"></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="nav-block">
+                                <h5 class="nav-heading">Galleries</h5>
+                                <div class="general-menu clearfix">
+                                    <ul class="menu-col">
+                                        <li><a href="#"><span class="dn-airplane"></span> Airplanes</a></li>
+                                        <li><a href="#"><span class="dn-abstract"></span> Abstract</a></li>
+                                        <li><a href="#"><span class="dn-animal"></span> Animals</a></li>
+                                        <li><a href="#"><span class="dn-car"></span> Cars</a></li>
+                                    </ul>
+                                    <ul class="menu-col">
+                                        <li><a href="#"><span class="dn-anime"></span> Anime</a></li>
+                                        <li><a href="#"><span class="dn-travel"></span> Travel</a></li>
+                                        <li><a href="#"><span class="dn-computer"></span> Computers</a></li>
+                                        <li><a href="#"><span class="dn-people"></span> People</a></li>
+                                    </ul>
+                                    <ul class="menu-col">
+                                        <li><a href="#"><span class="dn-place"></span> Places</a></li>
+                                        <li><a href="#"><span class="dn-food-drink"></span> Food&Drink</a></li>
+                                        <li><a href="#"><span class="dn-videogame"></span> Video Games</a></li>
+                                        <li><a href="#" class="view-more">View More <span class="bullet"></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li><a href="#">Upload</a></li>
+                    <li class="btn-join-free hidden-xs"><a href="#" data-toggle="modal" data-target="#SignupBox" #SignupBox>Join for <strong class="text-uppercase">Free</strong></a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+        </div>
+        <!--/.header-bottom-->
+    </header>
+    <!--Header-->
+
+    <!--Login Modal-->
+<div id="LoginBox" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtnLogin><span aria-hidden="true">×</span></button>
+      <!-- Mixins-->
+      <div class="log-container">
+        <div class="card"></div>
+        <div class="card">
+          <h3 class="title">Login with:</h3>
+          <div class="social-log">
+              <a class="log-btn btn-fb cursor-like" (click)="signup('f')"><i class="fa fa-facebook"></i> Facebook</a>
+              <a class="log-btn btn-tw cursor-like" (click)="signup('t')"><i class="fa fa-twitter"></i> Twitter</a>
+              <a class="log-btn btn-gplus cursor-like" (click)="signup('g')"><i class="fa fa-google-plus"></i>  Google Plus</a>
+            </div>
+          <form (ngSubmit)="onSignin(f)" #f="ngForm">
+            <div class="form-group">
+              <input type="text" id="username" name="username" ngModel class="form-control" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+              <input type="password" id="password" name="password" ngModel class="form-control" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-8">
+                    <div class="forgot-links"><a href="#" class="switch-view-user">Forgot Username?</a> <span class="log-divider">|</span> <a href="#" class="switch-view-pass">Forgot Password?</a></div>
+                </div>
+                <div class="col-sm-4">
+                  <button type="submit" [disabled]="!f.valid" class="btn btn-success btn-lg btn-block">Log In</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="log-footer">
+            Don't have an account? <a href="#" data-toggle="modal" data-target="#SignupBox" data-dismiss="modal">Join for <strong>FREE</strong></a>
+          </div>
+        </div>
+        <div class="card alt fu">
+          <div class="toggle" title="Reset Username"></div>
+          <h3 class="title">Forgot Username?
+            <div class="close"></div>
+          </h3>
+          <form (ngSubmit)="onForgotUsername(fu)" #fu="ngForm">
+            <div class="form-group">
+              <input type="text" name="email" ngModel #umail="ngModel" class="form-control" placeholder="Enter Your Email Address" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" autofocus>
+             <small [hidden]="umail.valid || (umail.pristine && !fu.submitted)" class="text-danger">
+                  Email is required and format should be <i>john@doe.com</i>.
+              </small>
+            </div>
+            <div class="button-container">
+              <button type="submit" [disabled]="!fu.valid" class="btn btn-success btn-lg">Send</button>
+            </div>
+          </form>
+        </div>
+        <div class="card alt fp">
+          <div class="toggle" title="Reset Password"></div>
+          <h3 class="title">Forgot Password?
+            <div class="close"></div>
+          </h3>
+          <form (ngSubmit)="onForgotPassword(fp)" #fp="ngForm">
+            <div class="form-group">
+              <input type="text" id="email" name="email" ngModel #pmail="ngModel" class="form-control" placeholder="Enter Your Email Address" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" autofocus>
+              <small [hidden]="pmail.valid || (pmail.pristine && !fp.submitted)" class="text-danger">
+                  Email is required and format should be <i>john@doe.com</i>.
+              </small>
+            </div>
+            <div class="button-container">
+              <button type="submit" [disabled]="!fp.valid" class="btn btn-success btn-lg">Send</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--// Login Modal-->
+
+<!--Set Password Modal-->
+<div id="setsocialBox" class="modal fade in" tabindex="-1" role="dialog">
+  <div class="modal-dialog social-modal-box">
+    <div class="modal-content">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    <div class="log-container">
+      <div class="card"></div>
+      <div class="card">
+        <h3 class="title">Complete Your Registration!</h3>
+
+        <form (ngSubmit)="setPass(fs)" #fs="ngForm">
+          <div class="form-group">
+            <input type="text" name="socialusername" ngModel class="form-control" placeholder="Username" required 
+                #socialusername="ngModel" minlength="3" maxlength="8" autofocus>
+            <small [hidden]="socialusername.valid || (socialusername.pristine&& !fs.submitted)" class="text-danger">
+                Username is required (minimum 3 characters)
+            </small>
+          </div>
+          <div class="form-group" *ngIf='driver == "t"'>
+              <input type="email" class="form-control" name="email" [(ngModel)]="socialemail" placeholder="Email Address"
+                  required  #socialmail="ngModel" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" autofocus>
+              <small [hidden]="socialmail.valid || (socialmail.pristine && !fs.submitted)" class="text-danger">
+                  Email is required and format should be <i>john@doe.com</i>.
+              </small>
+          </div>
+          <div class="form-group">
+            <input type="password" name="socialpassword" ngModel class="form-control" placeholder="Password" required
+                #socialpassword="ngModel" minlength="5" autofocus>
+            <small [hidden]="socialpassword.valid || (socialpassword.pristine&& !fs.submitted)" class="text-danger">
+                Password is required (minimum 5 characters).
+            </small>
+          </div>
+          <div class="form-group">
+            <input type="password" name="socialconfirmPassword" ngModel class="form-control" placeholder="Confirm Password" required
+                #socialconfirmPassword="ngModel" validateEqual="socialpassword" autofocus>
+            <small [hidden]="socialconfirmPassword.valid || (socialconfirmPassword.pristine&& !fs.submitted)" class="text-danger">
+                Your password don't match.
+            </small>
+          </div>
+          
+          <div class="form-group">
+            <div class="row">
+                <button type="submit" [disabled]="!fs.valid" class="btn btn-success btn-lg btn-block">Save</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="SignupBox" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" #closeBtn aria-label="Close"><span aria-hidden="true">×</span></button>
+        <div class="signup-cols">
+          <div class="col-right col-sm-push-6">
+            <div class="log-form">
+              <h3>Join Desktop Nexus!</h3>
+              <span class="free-tag"></span>
+              <div class="social-log btn-full">
+                <h4>Signup with:</h4>
+                <a class="log-btn btn-fb cursor-like" (click)="signup('f')"><i class="fa fa-facebook"></i> Facebook</a>
+                <a class="log-btn btn-tw cursor-like" (click)="signup('t')"><i class="fa fa-twitter"></i> Twitter</a>
+                <a class="log-btn btn-gplus cursor-like" (click)="signup('g')"><i class="fa fa-google-plus"></i>  Google Plus</a>
+              </div>
+              <div class="toggle-signup-email text-center">
+                <button type="button" class="btn btn-default" #signupBtn><i class="fa fa-envelope-o"></i> Signup with an Email</button>
+              </div>
+              <div class="signup-email">
+                    <form #fr="ngForm" novalidate (ngSubmit)="onSignup(fr.value, fr.valid)">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="firstname" placeholder="First Name" minlength="2" maxlength="15"
+                                        [(ngModel)]="user.firstname" required #first="ngModel" autofocus>
+                                    <small [hidden]="first.valid || (first.pristine && !fr.submitted)" class="text-danger">
+                                        First Name is required.
+                                    </small>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" name="lastname" class="form-control" placeholder="Last Name" minlength="2" maxlength="15"
+                                        [(ngModel)]="user.lastname" required #last="ngModel" autofocus>
+                                    <small [hidden]="last.valid || (last.pristine && !fr.submitted)" class="text-danger">
+                                        Last Name is required.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="username" placeholder="Username" 
+                                [(ngModel)]="user.username" required minlength="3" maxlength="32" #name="ngModel" autofocus>
+                            <small [hidden]="name.valid || (name.pristine && !fr.submitted)" class="text-danger">
+                                Username is required (minimum 3 characters).
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control" name="password" [(ngModel)]="user.password" placeholder="Password"
+                                        required validateEqual="confirmPassword" reverse="true" #pass="ngModel" minlength="5" autofocus>
+                                    <small [hidden]="pass.valid || (pass.pristine && !fr.submitted)" class="text-danger">
+                                        Password is required (minimum 5 characters)
+                                    </small>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="confirmPassword" autofocus
+                                        required validateEqual="password" reverse="false" #confirm="ngModel" placeholder="Confirm Password">
+                                    <small [hidden]="confirm.valid || (confirm.pristine && !fr.submitted)" class="text-danger">
+                                        Your password don't match
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" [(ngModel)]="user.email" placeholder="Email Address"
+                                required  #mail="ngModel" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" autofocus>
+                            <small [hidden]="mail.valid || (mail.pristine && !fr.submitted)" class="text-danger">
+                                Email is required and format should be <i>john@doe.com</i>.
+                            </small>
+                            <p class="text-right"><small>We respect your privacy. <a (click)="navigate('policy')">Read more</a></small></p>
+                        </div>
+                        <div class="form-group">
+                            <!-- <re-captcha (resolved)="resolved($event)" siteKey="6Lck3SYUAAAAAPusT5cwRT8EqIH_N62REeUsP3aP"></re-captcha> -->
+                            <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6Lck3SYUAAAAAPusT5cwRT8EqIH_N62REeUsP3aP" id="recaptcha-1"></div>
+                        </div>
+                        <div class="form-group">
+ <!--                            <div class="custom-checkbox">
+                                <input type="checkbox" name="" id="emailme" checked > <label for="emailme">Email me popular wallpapers each week</label>
+                            </div> -->
+                            <div class="custom-checkbox">
+                                <input type="checkbox" name="agreed" autofocus ngModel id="agreed" required> <label for="agreed">I agree to the <a (click)="navigate('term')">terms of service</a>.</label>
+                            </div>
+                        </div>
+                        <div class="reg-btn">
+                            <button type="submit" class="btn btn-success btn-lg" [disabled]="!fr.valid && visible">Register Now!</button>
+                        </div>
+                    </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-left col-sm-pull-6">
+            <div class="info-points">
+              <h3>Why Join Desktop Nexus?</h3>
+              <ul>
+                <li>
+                  <p>Be part of the <strong>world's fastest</strong> growing wallpaper community!</p>
+                </li>
+                <li>
+                  <p>Contribute! <strong>Upload and share</strong> your wallpapers with the world!</p>
+                </li>
+                <li>
+                  <p>Members see <strong>less advertising</strong> than guests!</p>
+                </li>
+                <li>
+                  <p><strong>Receive feedback</strong> on your profile and all your wallpapers!</p>
+                </li>
+                <li>
+                  <p>Organize your favorite wallpapers to <strong>share with friends</strong>!</p>
+                </li>
+                <li>
+                  <p>Be identified by your <strong>personalized avatar</strong> for comments or uploads!</p>
+                </li>
+                <li>
+                  <p>Cast your votes to help <strong>rank the best</strong> and most popular wallpapers!</p>
+                </li>
+              </ul>
+            </div>
+            <div class="reg-mascot"></div>
+            <div class="already-member text-right">
+              <p>Already a member?</p>
+              <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#LoginBox"  #loginBtn data-dismiss="modal">Click here to <span>login!</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

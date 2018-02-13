@@ -1,0 +1,63 @@
+<div class="body-content">              
+    <div class="setting-cont">
+        <h3 class="main-heading">Change Information</h3>
+        <div class="change-pass">
+          <label class="sub-heading">First Name</label>
+          <input type="text" class="form-control firstname" name="firstname" value="{{user.firstname}}" />
+          <label class="sub-heading">Last Name</label>
+          <input type="text" class="form-control lastname" name="lastname" value="{{user.lastname}}" />
+          <hr>
+          <label for="email">Primary email address</label>
+          <p>
+            This email will be used for account-related notifications and for private chat with members.
+          </p>
+          <ul class="email-list Box">
+            <li *ngFor="let cmt of email">
+              <div class="info-check noselect">
+                <span>{{cmt.email}}</span>
+                <div class="clean"></div>
+                <span class="label active tooltipped" *ngIf="cmt.primary === 1">Primary</span>
+                <span class="label visibility tooltipped" *ngIf="cmt.verified_at === 0">Unverified</span>
+                <span class="label visibility tooltipped" *ngIf="cmt.verified_at === 1">Verified</span>
+                <span class="email-action" [ngClass]="[cmt.primary === 1?'disabled': '']">
+                  <button type="button" class="btn btn-sm" data-toggle="tooltip" title="Making Primary" *ngIf="isPrimary(cmt)" (click)="setPrimary(cmt.email)">
+                  <svg aria-hidden="true" class="octicon octicon-pencil" height="16" version="1.1" viewBox="0 0 14 16" width="14" ><path fill-rule="evenodd" d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"></path></svg>
+                  </button>
+                  <span class="resent-small" data-toggle="tooltip" title="Verification email resent" (click)="resendEmail(cmt.email)">
+                    <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"></path></svg>
+                  </span>
+                  <span class="resent" *ngIf="cmt.verified_at === 0">
+                    Verification email sent.
+                    <a (click)="resendEmail(cmt.email)">Resend</a>
+                  </span>
+                  <button class="btn-link settings-remove-email settings-disabled-remove-email tooltipped tooltipped-nw" type="button" [disabled]="cmt.primary === 1" (click)="removeClick(cmt.email)">
+                    <svg aria-hidden="true" class="octicon octicon-trashcan" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"></path></svg>
+                  </button>
+                </span>
+              </div>
+            </li>
+          </ul>
+          <div class="add-email">
+            <label for="email">Add email address</label>
+            <div>
+              <input class="form-control short" id="email" name="user_email[email]" required="required" size="30" type="email" #newmail (keyup.enter)="addEmail(newmail.value)">
+              <button type="submit" class="btn btn-primary" (click)="addEmail(newmail.value)">Add</button>
+            </div>
+          </div>
+          <button type="button" class="btn btn-success" (click)="saveInfo()">Save Changes</button>
+        </div>
+    </div>
+</div>
+<!--/.body-content-->
+<!-- Favourite Delete Confirm -->
+<div id="ConfirmDelete">
+    <div class="conf-box text-center">
+        <div class="icon-holder"><i class="fa fa-exclamation-triangle"></i></div>
+        <div id="conf_txt"></div>
+        <p class="genrl-msg">It is non reversable action so please think twice about it.</p>
+        <div class="conf-btns">
+            <button type="button" class="btn btn-primary del-item">Yes</button> 
+            <button type="button" class="btn btn-primary cancel-del-item">No</button>
+        </div>
+    </div>
+</div>
