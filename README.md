@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./imgs/angular.png" width="200" height="200"/>
+</p>
+
 # Front
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.5.
